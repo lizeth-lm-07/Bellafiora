@@ -1,0 +1,114 @@
+/* Layout general */
+.cart-page {
+  padding: calc(30px + 65px + 20px) 4% 4%;
+  background: var(--gris-claro);
+  min-height: 100vh;
+}
+
+.cart-title {
+  font-size: 3rem;
+  color: var(--gris-oscuro);
+  margin: 1rem 0 2rem;
+}
+
+.cart-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 0.8fr;
+  gap: 2rem;
+}
+
+/* Lista de items */
+.cart-items {
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px var(--sombra-clara);
+  padding: 0.5rem 0;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 110px 1fr 160px 160px 140px;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem 1.6rem;
+  border-bottom: 1px solid var(--gris-transparente);
+}
+.cart-item:last-child { border-bottom: none; }
+
+.item-media img {
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.item-info .item-name { font-size: 1.8rem; color: var(--negro); margin-bottom: .2rem; }
+.item-info .item-sku { color: var(--gris-oscuro); font-size: 1.3rem; margin-bottom: .6rem; }
+
+.item-variants { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+.item-variants label, .item-variants select { font-size: 1.3rem; }
+
+/* Precios */
+.item-price .unit { display: flex; flex-direction: column; gap: .2rem; align-items: flex-end; }
+.old-price { color: #999; text-decoration: line-through; font-size: 1.3rem; }
+.current-price { color: var(--negro); font-weight: 700; font-size: 1.6rem; }
+
+/* Cantidad */
+.item-qty { display: flex; align-items: center; justify-content: center; gap: .6rem; }
+.qty-btn {
+  width: 34px; height: 34px; border-radius: 8px; background: var(--gris-claro);
+  cursor: pointer; font-size: 2rem; line-height: 0; display: grid; place-items: center;
+}
+.qty-input {
+  width: 64px; height: 34px; border: 1px solid var(--gris-transparente);
+  border-radius: 8px; text-align: center; font-size: 1.6rem; background: #fff;
+}
+
+/* Total por línea */
+.item-total { display: flex; align-items: center; justify-content: space-between; gap: .8rem; }
+.line-total { font-weight: 700; font-size: 1.6rem; }
+.remove-item { background: transparent; cursor: pointer; font-size: 1.6rem; color: var(--gris-oscuro); }
+.remove-item:hover { color: var(--rosafuerte); }
+
+/* Resumen */
+.cart-summary {
+  position: sticky; top: calc(30px + 65px + 20px);
+  align-self: start;
+  background: var(--blanco);
+  border-radius: 12px;
+  box-shadow: 0 6px 24px var(--sombra-clara);
+  padding: 1.6rem;
+  display: flex; flex-direction: column; gap: 1.4rem;
+}
+
+.shipping label { font-size: 1.4rem; color: var(--gris-oscuro); }
+.shipping select {
+  height: 40px; border: 1px solid var(--gris-transparente); border-radius: 8px; padding: 0 .8rem; background: #fff; width: 100%;
+}
+.shipping-note { color: var(--gris-oscuro); font-size: 1.2rem; }
+
+.totals { display: grid; gap: .6rem; }
+.totals .row { display: flex; align-items: center; justify-content: space-between; font-size: 1.5rem; }
+.totals .tax { color: var(--gris-oscuro); }
+.totals .grand { font-weight: 800; font-size: 1.8rem; border-top: 1px dashed var(--gris-transparente); padding-top: .8rem; }
+
+.actions { display: grid; gap: .8rem; }
+.btn-primary { background: var(--rosa); color: #fff; border: none; height: 40px; border-radius: 8px; }
+.btn-primary:hover { background: var(--rosafuerte); }
+.btn-light { background: var(--gris-claro); color: var(--negro); border: 1px solid var(--gris-transparente); height: 40px; border-radius: 8px; }
+.btn-ghost { background: transparent; color: var(--negro); border: 1px solid var(--gris-transparente); text-align: center; display: inline-flex; align-items: center; gap: .6rem; justify-content: center; height: 40px; border-radius: 8px; }
+
+.secure { text-align: center; font-size: 1.3rem; color: var(--gris-oscuro); }
+.mini-foot { padding: 2rem 4%; text-align: center; color: var(--gris-oscuro); font-size: 1.3rem; }
+
+/* Responsive */
+@media (max-width: 1060px) {
+  .cart-grid { grid-template-columns: 1fr; }
+  .cart-summary { position: static; }
+  .cart-item { grid-template-columns: 90px 1fr 110px 120px 120px; }
+}
+@media (max-width: 720px) {
+  .cart-item { grid-template-columns: 80px 1fr; grid-template-rows: auto auto auto; }
+  .item-price, .item-qty, .item-total { justify-self: start; }
+}

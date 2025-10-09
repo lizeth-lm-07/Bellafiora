@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bellafiora | Carrito</title>
+  <link rel="icon" type="image/svg+xml" href="Imágenes/Inicio/Bellafiora_logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link rel="stylesheet" href="CSS/inicio.css"><!-- tu CSS base -->
+  <link rel="stylesheet" href="CSS/carrito.css"><!-- estilos del carrito -->
+  <script src="JS/carrito.js" defer></script><!-- lógica del carrito -->
+</head>
+
+<body>
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="banner-content">
+      <div class="content-info">
+        <p><i class="fa-solid fa-phone"></i> +52 (81-26-05-58-24)</p>
+      </div>
+      <p class="envio-express"><i class="fas fa-shipping-fast"></i> ¡Envíos express en Monterrey!</p>
+      <div class="social-links">
+        <a href="#" class="btn-social-link"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="btn-social-link"><i class="fa-brands fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+    <a href="index.html" class="logofloreria"><img src="Imágenes/Inicio/Bellafiora_logo.png" alt="Bellafiora"></a>
+
+    <nav class="navbar">
+      <a href="index.html#home">Inicio</a>
+      <a href="index.html#about">Nosotros</a>
+      <div class="dropdown">
+        <a href="#" class="dropdown-btn">Arreglos Florales</a>
+        <div class="dropdown-content">
+          <a href="#">Ramos Florales</a>
+          <a href="#">Jarrones, Canastas y Cajas</a>
+          <a href="#">San Valentín</a>
+          <a href="#">Día de las Madres</a>
+          <a href="#">Ocasiones Especiales</a>
+        </div>
+      </div>
+      <a href="index.html#Contacto">Contacto</a>
+    </nav>
+
+    <div class="icons">
+      <a href="carrito.html" class="fas fa-shopping-cart"></a>
+      <a href="#" class="fas fa-user"></a>
+    </div>
+  </header>
+
+  <!-- MAIN: CARRITO -->
+  <main class="cart-page">
+    <h1 class="cart-title">Contenido del carrito</h1>
+
+    <div class="cart-grid">
+      <!-- LISTA DE PRODUCTOS -->
+      <section class="cart-items">
+        <!-- ITEM -->
+        <article class="cart-item" data-price="289" data-id="GASTCE-AM">
+          <div class="item-media">
+            <img src="Imágenes/Productos/ramo_demo.png" alt="Ramo Bellafiora">
+          </div>
+
+          <div class="item-info">
+            <h2 class="item-name">Ramo Premium Rosa Pastel</h2>
+            <p class="item-sku">CÓDIGO: <span>GASTCE-AM</span></p>
+
+            <div class="item-variants">
+              <label>
+                Color:
+                <select class="item-color">
+                  <option>Natural</option>
+                  <option>Rosa</option>
+                  <option>Blanco</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="item-price">
+            <div class="unit">
+              <span class="old-price">$389.00</span>
+              <span class="current-price">$289.00</span>
+            </div>
+          </div>
+
+          <div class="item-qty">
+            <button class="qty-btn minus" aria-label="Restar">−</button>
+            <input type="number" class="qty-input" min="1" value="1" inputmode="numeric" />
+            <button class="qty-btn plus" aria-label="Sumar">+</button>
+          </div>
+
+          <div class="item-total">
+            <span class="line-total">$289.00</span>
+            <button class="remove-item" title="Quitar"><i class="fa-solid fa-trash-can"></i></button>
+          </div>
+        </article>
+      </section>
+
+      <!-- RESUMEN / ENVÍO -->
+      <aside class="cart-summary">
+        <div class="shipping">
+          <label for="shippingSelect">Envío</label>
+          <select id="shippingSelect">
+            <option value="0">Retiro en tienda — $0.00</option>
+            <option value="90">Envío estándar — $90.00</option>
+            <option value="180">Envío express — $180.00</option>
+          </select>
+          <small class="shipping-note"><i class="fa-solid fa-circle-info"></i> Puedes modificarlo en checkout.</small>
+        </div>
+
+        <div class="totals">
+          <div class="row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
+          <div class="row"><span>Envío</span><span id="shipCost">$0.00</span></div>
+          <div class="row tax"><span>IVA (16% incluido)</span><span id="tax">$0.00</span></div>
+          <div class="row grand"><span>Total</span><span id="grandTotal">$0.00</span></div>
+        </div>
+
+        <div class="actions">
+          <a href="index.html#home" class="btn btn-ghost"><i class="fa-solid fa-arrow-left"></i> Continuar comprando</a>
+          <button id="clearCart" class="btn btn-light">Vaciar carrito</button>
+          <button id="checkout" class="btn btn-primary"><i class="fa-solid fa-lock"></i> Proceder al pago</button>
+        </div>
+
+        <div class="secure">
+          <i class="fa-solid fa-shield-halved"></i> Transacción segura
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="mini-foot">
+    <p>© Bellafiora. Hecho con ❤️ en Mty.</p>
+  </footer>
+</body>
+</html>
