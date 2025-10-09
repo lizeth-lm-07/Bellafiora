@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bellafiora | Florería</title>
+  <!--LINK PARA FUENTE-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <!--LINK PARA ENLAZAR ARCHIVO CSS-->
+  <link rel="stylesheet" href="CSS/inicio.css">
+  <script src="JS/inicio.js" defer></script>
+</head>
+
+<!--CUERPO DE LA PÁGINA WEB-->
+
+<body>
+
+  <!--BANNER ANUNCIO-->
+
+  <div class="banner">
+    <div class="banner-content">
+      <div class="content-info">
+        <p>
+          <i class="fa-solid fa-phone"></i>
+          +52 (81-26-05-58-24)
+        </p>
+      </div>
+      <p class="envio-express">
+          <i class="fas fa-shipping-fast"></i>
+          ¡Envíos express en Monterrey!
+      </p>
+      <div class="social-links">
+        <a href="#" class="btn-social-link">
+          <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" class="btn-social-link">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MENÚ Y NAVEGACIÓN -->
+  <header>
+
+    <input type="checkbox" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <a href="#about" class="logofloreria"><img src="Imágenes/Inicio/Bellafiora_logo.png"></a>
+
+    <nav class="navbar">
+      <a href="#home">Inicio</a>
+      <a href="#about">Nosotros</a>
+       <!-- MENÚ CON SUBMENÚ -->
+      <div class="dropdown">
+      <a href="#Arreglos Florales" class="dropdown-btn">
+      Arreglos Florales 
+      </a>
+      <div class="dropdown-content">
+      <a href="#Ramos Florales">Ramos Florales </a>
+      <a href="#Jarrones, Canastas y Cajas Florales">Jarrones, Canastas y Cajas Florales </a>
+      <a href="#San Valentín">San Valentín</a>
+      <a href="#Día de las madres">Día de las madres</a>
+      <a href="#Ocasiones especiales">Ocasiones Especiales</a>
+     </div>
+     </div>
+      <a href="#Contacto">Contacto</a>
+    </nav>
+
+    <!--ICONOS - CARRITO DE COMPRAS Y LOGIN-->
+    <div class="icons">
+      <a href="#" class="fas fa-shopping-cart"></a>
+      <a href="#" class="fas fa-user"></a>
+    </div>
+  </header>
+
+  <!--INICIO SECTION-->
+  <section class="home" id="home">
+      <!-- CARRUSEL INTERFAZ DE INICIO -->
+  <div class="carousel-background">
+    <div class="slide active">
+      <img src="Imágenes/Inicio/Fondo 1.jpg" alt="Fondo 1 arreglos florales">
+    </div>
+    <div class="slide">
+      <img src="Imágenes/Inicio/Fondo 2.jpg" alt="Fondo 2 arreglos florales">
+    </div>
+    <div class="slide">
+      <img src="Imágenes/Inicio/Fondo 3.jpg" alt="Fondo 3 arreglos florales">
+    </div>
+  </div>
+
+  <!-- INDICADORES -->
+    <div class="carousel-indicators">
+      <span class="indicator active" data-slide="0"></span>
+      <span class="indicator" data-slide="1"></span>
+      <span class="indicator" data-slide="2"></span>
+    </div>
+  </div>
+
+    <div class="content">
+      <h3><em>¡Bienvenidos a Bellafiora!</em></h3>
+      <p>Estamos aquí para ayudarte a decir “te quiero”, “gracias” y “estoy contigo” con cada flor</p>
+    </div>
+
+  </section>
+
+  <!--NOSOTROS SECTION-->
+  <section class="about" id="about">
+
+    <h1 class="heading"><span>Sobre nosotros</span></h1>
+
+    <div class="row">
+
+      <div class="imagen-container">
+        <img src="Imágenes/Inicio/Ramo de flores.jpg">
+        <h3>💌Tarjeta con mensaje personalizado</h3>
+      </div>
+
+      <div class="content">
+        <h3>¿Por qué elegirnos?</h3>
+        <p>Llevamos más de 20 años creando arte floral y 7 años compartiendo emociones a través de redes sociales.
+        Felices por ser parte de esta historia que florece contigo. En Bellafiora, cada arreglo floral cuenta una historia única, tejida con pétalos de pasión y dedicación. 
+        Nuestro equipo de floristas expertos combina tradición e innovación para crear composiciones que no solo decoran espacios, sino que transmiten sentimientos profundos.
+        </p>
+        <a href="#" class="btn">¡Compra ahora!</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!--ICONOS - ENVÍO, PAGO Y PRODUCTOS EXTRA-->
+  <section class="icons-container">
+
+    <div class="icons">
+      <img src="Imágenes/Inicio/icono 1.jpg" alt="Entrega a domicilio">
+      <div class="content-info">
+        <h3>Entrega a domicilio</h3>
+        <span>Con costo extra</span>
+      </div>
+    </div>
+
+    <div class="icons">
+      <img src="Imágenes/Inicio/icono 2.jpg" alt="Pago contra-entrega y transferencia">
+      <div class="content-info">
+        <h3>Pago contra-entrega y transferencia</h3>
+        <span>Compra segura</span>
+      </div>
+    </div>
+
+    <div class="icons">
+      <img src="Imágenes/Inicio/icono 3.jpg" alt="Productos extra">
+      <div class="content-info">
+        <h3>Productos extra</h3>
+        <span>¡Chocolates y Peluches!</span>
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

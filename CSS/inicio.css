@@ -1,0 +1,688 @@
+:root {
+  /* ========== PALETA DE COLORES ========== */
+  --rosa: #ff6998;
+  --negro: hsl(0, 0%, 0%);
+  --rosafuerte: #ff006a;
+  --blanco: #ffffff;
+  --gris-claro: #f0f0f0;
+  --gris-oscuro: #333333;
+  --gris-transparente: #f0f0f0a8;
+  --rosa-banner: #ff6999;
+  --sombra-suave: rgba(0, 0, 0, 0.215);
+  --sombra-media: rgba(0, 0, 0, 0.795);
+  --sombra-clara: rgba(0, 0, 0, 0.1);
+  --blanco-transparente: rgba(255, 255, 255, 0.5);
+  --blanco-transparente-80: rgba(255, 255, 255, 0.8);
+}
+
+/* ========== RESET Y CONFIGURACIONES GLOBALES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  transition: .2s linear;
+}
+
+html {
+  font-size: 60%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 1rem 4%;
+}
+
+/* ========== HEADER Y NAVEGACIÓN ========== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--gris-transparente);
+  backdrop-filter: blur(3px);
+  padding: 1rem 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+  top: 20px;
+  height: 65px;
+}
+
+.logofloreria img {
+  height: 55px;
+  display: block;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+}
+
+.navbar a {
+  color: var(--negro);
+  font-size: 2rem;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: var(--rosafuerte);
+}
+
+.icons {
+  margin-left: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.icons a {
+  color: var(--negro);
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+.icons a:hover {
+  color: var(--rosafuerte);
+}
+
+.fa-bars {
+  display: none;
+}
+
+#toggler {
+  display: none;
+}
+
+/* ========== SUBMENÚ - ARREGLOS FLORALES ========== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--gris-transparente);
+  min-width: 220px;
+  box-shadow: 0 8px 16px var(--sombra-clara);
+  border-radius: 0.5rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.dropdown:hover .dropdown-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 1.2rem 1.5rem;
+  color: var(--negro);
+  font-size: 1.6rem;
+  border-bottom: 1px solid var(--gris-transparente);
+  backdrop-filter: blur(3px);
+  transition: all 0.3s ease;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background: var(--rosa);
+  color: var(--blanco);
+  padding-left: 2rem;
+}
+
+/* ========== BANNER SUPERIOR ========== */
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1010;
+  background: var(--rosa-banner);
+  padding: 5px 0;
+  margin-bottom: 1rem;
+}
+
+.banner-content {
+  padding: 0 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content-info {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex: 1;
+}
+
+.content-info p {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: 1.5rem;
+  color: var(--negro);
+  padding-left: 3%;
+}
+
+.content-info p i {
+  color: var(--negro);
+}
+
+.envio-express {
+  font-weight: bold;
+  color: var(--negro);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex: 5;
+  justify-content: center;
+  padding-right: 3%;
+}
+
+.envio-express i {
+  color: var(--negro) !important;
+  font-size: 1.5rem;
+}
+
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-right: 3%;
+}
+
+.social-links a {
+  color: var(--negro);
+}
+
+.social-links a i {
+  font-size: 1.5rem;
+  color: var(--negro);
+}
+
+/* ========== SECCIÓN HOME/CARRUSEL ========== */
+.home {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.carousel-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home .content {
+  max-width: 50rem;
+  position: relative;
+  z-index: 1;
+}
+
+.content h3 {
+  font-size: 7rem;
+  color: var(--blanco);
+  text-shadow: 2px 2px 5px var(--sombra-media);
+}
+
+.content span {
+  font-size: 3rem;
+  color: var(--rosa);
+  padding: 1rem 0;
+  line-height: 3.5;
+  text-align: center;
+}
+
+.content p {
+  font-size: 2.5rem;
+  color: var(--blanco);
+  text-shadow: 2px 2px 5px var(--negro);
+  padding: 1rem 0;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* INDICADORES DEL CARRUSEL */
+.carousel-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--blanco-transparente);
+  border: 2px solid var(--blanco-transparente-80);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: var(--blanco);
+  border-color: var(--blanco);
+  transform: scale(1.2);
+}
+
+.indicator:hover {
+  background: var(--blanco-transparente-80);
+  transform: scale(1.1);
+}
+
+/* ========== SECCIÓN NOSOTROS ========== */
+.heading {
+  text-align: center;
+  padding: 1rem;
+  margin: 2rem 0;
+}
+
+.heading span {
+  font-size: 4.5rem;
+  color: var(--rosafuerte);
+  text-shadow: 2px 2px 5px var(--sombra-suave);
+}
+
+.about .row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  padding-bottom: 3rem;
+}
+
+.about .row .imagen-container {
+  flex: 1 1 40rem;
+  position: relative;
+  max-width: 600px;
+  margin-right: 4rem;
+}
+
+.about .row .imagen-container img {
+  max-width: 100%;
+  width: 100%;
+  border: 1.5rem solid var(--rosa);
+  border-radius: 0.5rem;
+  box-shadow: 0 .5rem 1rem var(--gris-oscuro);
+  object-fit: cover;
+  display: block;
+}
+
+.about .row .imagen-container h3 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--rosa);
+  text-align: center;
+  padding: 0.4rem 1rem;
+  font-size: 2rem;
+  mix-blend-mode: none;
+  color: var(--blanco);
+}
+
+.about .row .content {
+  flex: 1 1 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+  padding-top: 1rem;
+}
+
+.about .row .content h3 {
+  font-size: 4rem;
+  font-weight: bold;
+  color: var(--negro);
+  text-shadow: 2px 2px 5px var(--sombra-suave);
+  text-align: center;
+}
+
+.about .row .content p {
+  font-size: 2rem;
+  text-align: center;
+  line-height: 1.5;
+  color: var(--negro);
+  text-shadow: none;
+}
+
+/* ========== ICONS/CARACTERÍSTICAS ========== */
+.icons-container {
+  background: var(--blanco);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  justify-content: center;
+}
+
+.icons-container .icons {
+  background: var(--blanco);
+  border: 0.5rem solid var(--blanco);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  flex: 1 1 18rem;
+  max-width: 300px;
+}
+
+.icons-container .icons img {
+  height: 4rem;
+  margin-right: 1.5rem;
+}
+
+.icons-container .icons .content-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.icons-container .icons h3 {
+  color: var(--negro);
+  padding-bottom: .3rem;
+  font-size: 1.4rem;
+}
+
+.icons-container .icons span {
+  color: var(--gris-oscuro);
+  font-size: 1.2rem;
+}
+
+/* ========== COMPONENTES REUTILIZABLES ========== */
+.btn {
+  display: inline-block;
+  margin-top: 1rem;
+  border-radius: 5rem;
+  background: var(--rosa);
+  color: var(--blanco);
+  padding: .9rem 3.5rem;
+  cursor: pointer;
+  font-size: 1.7rem;
+}
+
+.btn:hover {
+  background: var(--rosafuerte);
+  color: var(--blanco);
+}
+
+/* ========== MEDIA QUERIES - RESPONSIVE ========== */
+@media (max-width: 1060px) {
+  /* ========== HEADER & NAVEGACIÓN ========== */
+  .fa-bars {
+    display: block;
+    color: var(--negro);
+    margin-right: auto;
+    font-size: 2rem;
+  }
+
+  .logofloreria {
+    margin-right: auto;
+    padding-left: 10%;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--gris-claro);
+    flex-direction: column;
+    align-items: flex-start;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    transition: clip-path 0.3s ease-in-out;
+    z-index: 100;
+    padding: 2rem;
+    display: none;
+  }
+
+  #toggler:checked~.navbar {
+    display: flex;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .navbar a {
+    display: block;
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--blanco);
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  /* ========== BANNER ========== */
+  .banner-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    text-align: center;
+    padding: 0 2%;
+  }
+
+  .content-info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    order: 1;
+    flex: 1;
+    white-space: nowrap;
+  }
+
+  .content-info p {
+    font-size: 1rem !important;
+  }
+
+  .content-info i {
+    font-size: 1.5rem !important;
+  }
+
+  .envio-express {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    flex: 1;
+    text-align: center;
+    padding-left: 5%;
+    font-size: 1rem;
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    order: 3;
+    flex: 1;
+    font-size: 1rem;
+  }
+
+  /* ========== SECCIONES DE CONTENIDO ========== */
+  .heading span {
+    font-size: 2.5rem;
+  }
+
+  /* HOME - CARRUSEL */
+  .home .content h3 {
+    font-size: 5rem;
+  }
+
+  .home .content p {
+    font-size: 2rem;
+  }
+
+  .carousel-indicators {
+    bottom: 20px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* NOSOTROS SECTION */
+  .about .row .content {
+    margin-top: 2.5rem;
+  }
+
+  .about .row .content h3 {
+    font-size: 2.8rem !important;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  .about .row .content p {
+    font-size: 1.6rem !important;
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 1rem;
+  }
+
+  .about .row .content .btn {
+    align-self: center;
+    font-size: 1.4rem;
+    padding: 0.7rem 2.5rem;
+  }
+
+  .about .row .imagen-container {
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+    width: 85%;
+  }
+
+  .about .row .imagen-container img {
+    border: 0.9rem solid var(--rosa);
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  .about .row .imagen-container h3 {
+    font-size: 1.6rem;
+    padding: 0.3rem 0.8rem;
+  }
+
+  /* ========== SUBMENÚ - ARREGLOS FLORALES ========== */
+  .dropdown {
+    width: 100%;
+  }
+
+  .dropdown-btn {
+    width: 100%;
+    justify-content: space-between;
+    padding: 1.2rem;
+    background: var(--blanco);
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .dropdown-content {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    width: 100%;
+    display: none;
+  }
+
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content a {
+    background: var(--gris-claro);
+    margin-bottom: 0.3rem;
+    border-radius: 0.3rem;
+    padding: 1rem 1.5rem;
+    display: block;
+  }
+
+  /* ========== ICONS CONTAINER RESPONSIVE ========== */
+  .icons-container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .icons-container .icons {
+    flex: 1 1 100%;
+    padding: 1rem;
+  }
+
+  .icons-container .icons img {
+    height: 4rem;
+    margin-right: 1.5rem;
+  }
+
+  .icons-container .icons h3 {
+    font-size: 1.5rem;
+  }
+
+  .icons-container .icons span {
+    font-size: 1.3rem;
+  }
+}
