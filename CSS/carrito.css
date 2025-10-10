@@ -1,7 +1,9 @@
 /* Layout general */
 .cart-page {
   padding: calc(30px + 65px + 20px) 4% 4%;
-  background: var(--gris-claro);
+  background: var(--blanco);
+  background-image: radial-gradient(#e2e2e2 1px, transparent 1px);
+  background-size: 20px 20px;
   min-height: 100vh;
 }
 
@@ -63,6 +65,12 @@
 .qty-input {
   width: 64px; height: 34px; border: 1px solid var(--gris-transparente);
   border-radius: 8px; text-align: center; font-size: 1.6rem; background: #fff;
+}
+.qty-btn.plus:active {
+  background: #22c55e;color: white; border-color: #22c55e;
+}
+.qty-btn.minus:active { 
+  background: #ef4444; color: white; border-color: #ef4444;
 }
 
 /* Total por línea */

@@ -34,14 +34,12 @@ class AutoCarousel {
     }
     
     goToSlide(slideIndex) {
-        // Remover active del slide e indicador actual
+      
         this.slides[this.currentSlide].classList.remove('active');
         this.indicators[this.currentSlide].classList.remove('active');
         
-        // Actualizar slide actual
         this.currentSlide = slideIndex;
         
-        // Agregar active al nuevo slide e indicador
         this.slides[this.currentSlide].classList.add('active');
         this.indicators[this.currentSlide].classList.add('active');
     }
@@ -74,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
     new AutoCarousel();
 });
 
-// Agrega esto a tu carrusel.js o donde tengas el JS
 document.addEventListener('DOMContentLoaded', function() {
   const dropdowns = document.querySelectorAll('.dropdown');
   
@@ -87,20 +84,17 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         e.stopPropagation();
         
-        // Cerrar otros dropdowns abiertos
         dropdowns.forEach(otherDropdown => {
           if (otherDropdown !== dropdown) {
             otherDropdown.classList.remove('active');
           }
         });
         
-        // Abrir/cerrar el dropdown actual
         dropdown.classList.toggle('active');
       }
     });
   });
   
-  // Cerrar dropdowns al hacer click fuera
   document.addEventListener('click', function(e) {
     if (window.innerWidth <= 1060) {
       if (!e.target.closest('.dropdown')) {
@@ -111,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
   
-  // Cerrar dropdowns al redimensionar la ventana
   window.addEventListener('resize', function() {
     if (window.innerWidth > 1060) {
       dropdowns.forEach(dropdown => {

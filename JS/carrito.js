@@ -17,11 +17,9 @@ function refresh(){
   });
 
   const ship = Number(document.getElementById('shippingSelect').value || 0);
-  const iva  = (subtotal + ship) * 0.16; // solo informativo (incluido)
 
   document.getElementById('subtotal').textContent   = money(subtotal);
   document.getElementById('shipCost').textContent   = money(ship);
-  document.getElementById('tax').textContent        = money(iva);
   document.getElementById('grandTotal').textContent = money(subtotal + ship);
 }
 
