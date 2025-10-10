@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bellafiora | Catálogo</title>
+    <link rel="icon" type="image/svg+xml" href="Imágenes/Inicio/Bellafiora_logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+    <link rel="stylesheet" href="CSS/catalago.css" />
+    <link rel="stylesheet" href="CSS/inicio.css" />
+    <script src="JS/catalogo.js" defer></script>
+</head>
+<body>
+    <!-- ===== BANNER SUPERIOR ===== -->
+    <div class="banner">
+    <div class="banner-content">
+        <div class="content-info">
+        <p><i class="fa-solid fa-phone"></i> +52 (81-26-05-58-24)</p>
+        </div>
+        <p class="envio-express"><i class="fas fa-shipping-fast"></i> ¡Envíos express en Monterrey!</p>
+        <div class="social-links">
+        <a href="#" class="btn-social-link">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+        <a href="#" class="btn-social-link">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        </div>
+    </div>
+    </div>
+
+    <!-- ===== HEADER / NAV ===== -->
+    <header>
+    <input type="checkbox" id="toggler" />
+    <label for="toggler" class="fas fa-bars" aria-label="Menú"></label>
+
+    <a class="logofloreria" href="#"><img src="Imágenes/Inicio/Bellafiora_logo.png" alt="Bellafiora"></a>
+
+    <nav class="navbar" id="mainNav">
+        <a href="index.html#home">Inicio</a>
+        <a href="index.html#about">Nosotros</a>
+
+        <div class="dropdown">
+        <button class="dropdown-btn" type="button" aria-expanded="false">
+            Arreglos Florales 
+        </button>
+        <div class="dropdown-content" role="menu">
+            <a href="#Ramos Florales" role="menuitem">Ramos Florales</a>
+            <a href="#Jarrones, Canastas y Cajas Florales" role="menuitem">Jarrones, Canastas y Cajas Florales</a>
+            <a href="#San Valentín" role="menuitem">San Valentín</a>
+            <a href="#Día de las madres" role="menuitem">Día de las madres</a>
+            <a href="#Ocasiones especiales" role="menuitem">Ocasiones Especiales</a>
+        </div>
+        </div>
+
+        <a href="index.html#Contacto">Contacto</a>
+    </nav>
+
+    <div class="icons">
+        <a href="carrito.html" class="fas fa-shopping-cart" aria-label="Carrito"></a>
+        <a href="#" class="fas fa-user" aria-label="Cuenta"></a>
+    </div>
+    </header>
+
+    <!-- ===== CATÁLOGO ===== -->
+    <main class="catalogo" id="catalogo">
+    <div class="catalogo-toolbar">
+        <div class="buscador" role="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="searchInput" type="search" placeholder="Buscar productos…" aria-label="Buscar productos" />
+        </div>
+
+        <div class="chips" id="chips" aria-label="Filtros por tipo"></div>
+
+        <div class="toolbar-meta">
+        <span id="countLabel">0 productos</span>
+        </div>
+    </div>
+
+    <div class="catalogo-layout">
+        <!-- Sidebar -->
+        <aside class="catalogo-sidebar" aria-label="Categorías">
+        <h3>Categorías</h3>
+        <nav id="sidebarCats" class="sidebar-list"></nav>
+        <hr />
+        <h4>Etiquetas</h4>
+        <div class="tags" id="tagList"></div>
+        </aside>
+
+        <!-- Grid -->
+        <section class="catalogo-grid" id="productGrid" aria-live="polite" aria-busy="false">
+        <!-- Tarjetas por JS -->
+        </section>
+    </div>
+    </main>
+
+    <!-- ===== TEMPLATE DE TARJETA ===== -->
+    <template id="tplCard">
+    <article class="card">
+        <div class="card-img-wrap">
+        <img class="card-img" alt="" />
+        <span class="badge-oferta" hidden>EN OFERTA</span>
+        </div>
+        <div class="card-body">
+        <h4 class="card-title"></h4>
+        <p class="card-desc"></p>
+        <div class="card-price-row">
+            <span class="card-price"></span>
+            <span class="card-price-old" hidden></span>
+        </div>
+        <div class="card-cta">
+            <div class="qty" aria-label="Cantidad">
+            <button class="qty-btn" data-act="minus" aria-label="Disminuir">−</button>
+            <input class="qty-input" type="number" min="1" value="1" inputmode="numeric" aria-label="Cantidad" />
+            <button class="qty-btn" data-act="plus" aria-label="Aumentar">+</button>
+            </div>
+            <button class="btn-add" type="button"><i class="fa-solid fa-plus"></i> Agregar</button>
+        </div>
+        </div>
+    </article>
+    </template>
+</body>
+</html>
