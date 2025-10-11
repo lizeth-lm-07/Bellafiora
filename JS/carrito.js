@@ -118,10 +118,32 @@ function renderRightPanelItemsList(){
   carrito.forEach(it=>{
     const li = document.createElement('li');
     const qty = Number(it.cantidad || 1);
-    li.textContent = `[${qty}] ${it.nombre || 'Artículo'}`;
+    const name = it.nombre || 'Artículo';
+
+    const top = document.createElement('div');
+    top.textContent = `[${qty}] ${name}`;
+
+    const sub = document.createElement('div');
+    sub.className = 'summary-subline';
+
+    if (it.custom && typeof it.custom === 'object') {
+      const pairs = Object.entries(it.custom)
+        .filter(([,v]) => v && String(v).trim() !== '')
+        .map(([k,v]) => {
+          const niceKey = k.replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+          return `${niceKey}: ${v}`;
+        });
+      sub.textContent = pairs.length ? pairs.join(' · ') : '';
+    } else {
+      sub.textContent = '';
+    }
+
+    li.appendChild(top);
+    if (sub.textContent) li.appendChild(sub);
     ul.appendChild(li);
   });
 }
+
 
 // Inyecta los selects para el artículo (si aplica) y enlaza eventos
 function attachCustomization(article, p){

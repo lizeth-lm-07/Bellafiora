@@ -324,3 +324,9 @@
 .resumen-items li:last-child {
   border-bottom: 0;
 }
+
+.resumen-items .summary-subline{
+  font-size: 12px;
+  opacity: .75;
+  margin-top: 2px;
+}
