@@ -18,7 +18,7 @@
 /* 🔹 Distribución general: más espacio al panel derecho */
 .cart-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;  /* El carrito más compacto, panel derecho más ancho */
+  grid-template-columns: 1fr 1fr;  /* El carrito más compacto, panel derecho más ancho */
   gap: 2.5rem;
 }
 
@@ -330,3 +330,133 @@
   opacity: .75;
   margin-top: 2px;
 }
+
+.personalize-toggle{
+  margin: 8px 0 6px;
+  padding: 8px 10px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.personalize-label{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.custom-fields .custom-row{
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0;
+}
+.custom-summary{
+  font-size: 12px;
+  opacity: .75;
+  margin-top: 4px;
+}
+.resumen-items .summary-subline{
+  font-size: 12px;
+  opacity: .75;
+  margin-top: 2px;
+}
+
+/* ===== Ultra-compacto opciones de personalización ===== */
+.personalize-toggle{
+  margin: 4px 0 2px;     /* KNOB #1: margen del switch */
+  padding: 4px 6px;
+  font-size: 12.5px;
+}
+
+.custom-fields{ row-gap: 2px; }  /* KNOB #2: separación vertical entre filas */
+
+.custom-fields .custom-row{
+  display: grid;
+  grid-template-columns: 110px 1fr; /* KNOB #3: ancho de las etiquetas */
+  align-items: center;
+  gap: 2px;                         /* KNOB #4: espacio entre etiqueta y select */
+  margin: 1px 0px;                    /* KNOB #5: margen por fila */
+  line-height: 1.15;
+}
+
+.custom-fields .custom-row > span{
+  font-size: 11.5px;                /* KNOB #6: tamaño de las etiquetas */
+}
+
+.custom-select{
+  padding: 3px 6px;                 /* KNOB #7: acolchado del select */
+  height: 28px;                     /* KNOB #8: altura del select */
+  font-size: 12.5px;                /* KNOB #9: tamaño del texto del select */
+}
+
+.custom-summary{
+  font-size: 12px;
+  margin-top: 3px;                  /* KNOB #10: espacio encima del resumen */
+  padding: 2px 3px;
+}
+
+/* Opcional: aún más apretado en móvil */
+@media (max-width: 640px){
+  .custom-fields .custom-row{
+    grid-template-columns: 100px 1fr;
+    gap: 3px;
+    margin: 0;
+  }
+  .custom-select{ height: 26px; font-size: 12px; padding: 2px 5px; }
+  .custom-fields .custom-row > span{ font-size: 12px; }
+}
+
+/* SELECT compacto */
+.custom-select{
+  height: 26px;              /* antes 28–32 */
+  padding: 2px 22px 2px 0px; /* menos padding, deja espacio a la flecha */
+  font-size: 12.5px;
+ 
+  border-radius: 6px;
+
+
+  /* flecha minimal y mismo alto en todos los navegadores */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 24 24' stroke='%23999' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 120px center;
+  background-size: 12px;
+}
+.custom-select:focus{
+  outline: none;
+
+}
+
+/* La columna del select no crece infinito */
+.custom-fields .custom-row{
+  grid-template-columns: 120px minmax(30px, 60px); /* etiqueta | select */
+}
+
+/* Evita estirar más allá del tope */
+.custom-select{
+  width: 70%;
+  min-width: 0;
+}
+
+/* Contenedor de acciones en cada renglón */
+.item-total .item-actions{
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;                 /* <<< separación clara entre botones */
+  margin-left: 8px;
+}
+
+/* Botón: Duplicar (neutral) */
+.item-actions .duplicate-item{
+  width: 34px; height: 34px;
+  border-radius: 10px;
+  background: #fff;
+  color: #444;
+}
+.item-actions .duplicate-item:hover{ background: #f6f6f6; }
+
