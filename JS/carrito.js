@@ -237,16 +237,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
       article.dataset.price = p.precio;
       article.dataset.id = p.id;
 
-      article.innerHTML = `
-        <div class="item-media"><img src="${p.imagen}" alt="${p.nombre}"></div>
+                  article.innerHTML = `        <div class="item-media"><img src="${p.imagen}" alt="${p.nombre}"></div>
         <div class="item-info">
-          <h2 class="item-name">${p.nombre}</h2>
-          <p class="item-sku">DESCUENTO: <span>-</span></p>
+          <h2 class="item-name">${p.nombre} ${ (p.precioOriginal && p.precioOriginal>p.precio) ? `<span class="badge-oferta">-${Math.round((1 - (p.precio / p.precioOriginal))*100)}%</span>` : `` }</h2>
+          <p class="item-sku">DESCUENTO: <span>${ (p.precioOriginal && p.precioOriginal>p.precio) ? (Math.round((1 - (p.precio / p.precioOriginal))*100) + '% aplicado automáticamente') : '0% de descuento' }</span></p>
           <div class="item-variants"></div>
         </div>
         <div class="item-price">
           <div class="unit">
-            <span class="current-price">$${p.precio}.00</span>
+            ${ (p.precioOriginal && p.precioOriginal>p.precio) ? `<span class="old-price">${money(p.precioOriginal)}</span>` : `` }
+            <span class="current-price">${money(p.precio)}</span>
           </div>
         </div>
         <div class="item-qty">
@@ -255,7 +255,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
           <button class="qty-btn plus" aria-label="Sumar">+</button>
         </div>
         <div class="item-total">
-          <span class="line-total">$${p.precio * p.cantidad}.00</span>
+          <span class="line-total">${money(p.precio * p.cantidad)}</span>
           <button class="remove-item" title="Quitar"><i class="fa-solid fa-trash-can"></i></button>
         </div>
       `;

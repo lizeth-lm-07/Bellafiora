@@ -129,6 +129,8 @@ function buildCard(p){
         id: p.id,
         nombre: p.nombre,
         precio: p.precio,
+        precioOriginal: (p.precioAntes && p.oferta) ? p.precioAntes : p.precio,
+        descuentoPct: (p.precioAntes && p.oferta) ? Math.round((1 - (p.precio / p.precioAntes)) * 100) : 0,
         imagen: p.img,
         cantidad
       });
