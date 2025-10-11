@@ -554,13 +554,15 @@ header {
 
 /* CONTENEDOR DEL MAPA */
 .map-container {
-  flex: 2;
+  flex: 1;
   min-width: 300px;
-  height: 400px;
+  height: 300px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 20px var(--sombra-clara);
   border: 3px solid var(--rosa);
+  display: flex;
+  margin-top:4rem ;
 }
 
 /* ========== COMPONENTES REUTILIZABLES ========== */
@@ -799,3 +801,19 @@ header {
     font-size: 1.3rem;
   }
 }
+/*Lista de características - Nosotros*/
+
+.feature-item {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .feature-text strong {
+    font-size: 1.5rem;
+  }
+  
+  .feature-text span {
+    font-size: 1.3rem;
+  }
+
+ 
