@@ -45,11 +45,9 @@
             Arreglos Florales 
         </button>
         <div class="dropdown-content" role="menu">
-            <a href="#Ramos Florales" role="menuitem">Ramos Florales</a>
-            <a href="#Jarrones, Canastas y Cajas Florales" role="menuitem">Jarrones, Canastas y Cajas Florales</a>
-            <a href="#San Valentín" role="menuitem">San Valentín</a>
-            <a href="#Día de las madres" role="menuitem">Día de las madres</a>
-            <a href="#Ocasiones especiales" role="menuitem">Ocasiones Especiales</a>
+            <a href="#ramos-florales" role="menuitem">Ramos Florales</a>
+            <a href="#jarrones-canastas-y-cajas-florales" role="menuitem">Jarrones, Canastas y Cajas Florales</a>
+            <a href="#san-valentin" role="menuitem">San Valentín</a>
         </div>
         </div>
 
@@ -64,13 +62,16 @@
 
     <!-- ===== CATÁLOGO ===== -->
     <main class="catalogo" id="catalogo">
+        <h1 class="page-title">Catálogo</h1>
+
     <div class="catalogo-toolbar">
         <div class="buscador" role="search">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input id="searchInput" type="search" placeholder="Buscar productos…" aria-label="Buscar productos" />
         </div>
 
-        <div class="chips" id="chips" aria-label="Filtros por tipo"></div>
+        
+
 
         <div class="toolbar-meta">
         <span id="countLabel">0 productos</span>
@@ -78,17 +79,8 @@
     </div>
 
     <div class="catalogo-layout">
-        <!-- Sidebar -->
-        <aside class="catalogo-sidebar" aria-label="Categorías">
-        <h3>Categorías</h3>
-        <nav id="sidebarCats" class="sidebar-list"></nav>
-        <hr />
-        <h4>Etiquetas</h4>
-        <div class="tags" id="tagList"></div>
-        </aside>
-
         <!-- Grid -->
-        <section class="catalogo-grid" id="productGrid" aria-live="polite" aria-busy="false">
+        <section id="productGrid" aria-live="polite" aria-busy="false">
         <!-- Tarjetas por JS -->
         </section>
     </div>
