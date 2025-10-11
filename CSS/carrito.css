@@ -9,7 +9,7 @@
 
 .cart-title {
   font-size: 3rem;
-  color: var(--gris-oscuro);
+  color: var(--negro);
   margin: 1rem 0 2rem;
 }
 
@@ -90,9 +90,9 @@
   display: flex; flex-direction: column; gap: 1.4rem;
 }
 
-.shipping label { font-size: 1.4rem; color: var(--gris-oscuro); }
+.shipping label {font-size: 1.4rem; color: var(--gris-oscuro); }
 .shipping select {
-  height: 40px; border: 1px solid var(--gris-transparente); border-radius: 8px; padding: 0 .8rem; background: #fff; width: 100%;
+text-align:center; height: 40px; border: 1px solid var(--gris-transparente); border-radius: 8px; padding: 0 .8rem; background: #fff; width: 100%;
 }
 .shipping-note { color: var(--gris-oscuro); font-size: 1.2rem; }
 

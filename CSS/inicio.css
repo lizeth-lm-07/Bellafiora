@@ -329,7 +329,7 @@ header {
   transform: scale(1.1);
 }
 
-/* ========== SECCIÓN NOSOTROS ========== */
+/* ========== SECCIÓN NOSOTROS ACTUALIZADA ========== */
 .heading {
   text-align: center;
   padding: 1rem;
@@ -392,7 +392,7 @@ header {
 }
 
 .about .row .content h3 {
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: bold;
   color: var(--negro);
   text-shadow: 2px 2px 5px var(--sombra-suave);
@@ -401,10 +401,60 @@ header {
 
 .about .row .content p {
   font-size: 2rem;
-  text-align: center;
+  text-align: justify;
   line-height: 1.5;
   color: var(--negro);
   text-shadow: none;
+}
+
+/* ========== LISTA DE CARACTERÍSTICAS ========== */
+.features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  background: var(--blanco);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px var(--sombra-clara);
+  border-left: 3px solid var(--rosa);
+  transition: transform 0.2s ease;
+}
+
+.feature-item:hover {
+  transform: translateY(-2px);
+}
+
+.feature-item i {
+  font-size: 2rem;
+  color: var(--rosa);
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.feature-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.feature-text strong {
+  font-size: 1.8rem;
+  color: var(--negro);
+  font-weight: 600;
+}
+
+.feature-text span {
+  font-size: 1.4rem;
+  color: var(--gris-oscuro);
+  line-height: 1.4;
 }
 
 /* ========== ICONS/CARACTERÍSTICAS ========== */
@@ -448,6 +498,69 @@ header {
 .icons-container .icons span {
   color: var(--gris-oscuro);
   font-size: 1.2rem;
+}
+
+/* ========== SECCIÓN CONTACTO ========== */
+.contact .row {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+}
+
+/* INFO DE CONTACTO */
+.contact-info {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-info h3 {
+  font-size: 3rem;
+  color: var(--negro);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--blanco);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px var(--sombra-clara);
+}
+
+.info-item i {
+  font-size: 2.5rem;
+  color: var(--rosa);
+  margin-top: 0.5rem;
+}
+
+.info-item strong {
+  font-size: 1.8rem;
+  color: var(--negro);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.info-item p {
+  font-size: 1.6rem;
+  color: var(--gris-oscuro);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* CONTENEDOR DEL MAPA */
+.map-container {
+  flex: 2;
+  min-width: 300px;
+  height: 400px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--sombra-clara);
+  border: 3px solid var(--rosa);
 }
 
 /* ========== COMPONENTES REUTILIZABLES ========== */
@@ -595,7 +708,7 @@ header {
 
   .about .row .content p {
     font-size: 1.6rem !important;
-    text-align: center;
+    text-align: justify;
     line-height: 1.4;
     padding: 0 1rem;
   }
