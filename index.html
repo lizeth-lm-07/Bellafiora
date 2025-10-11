@@ -1,122 +1,96 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bellafiora | Florería</title>
   <link rel="icon" type="image/svg+xml" href="Imágenes/Inicio/Bellafiora_logo.png">
-  <!--LINK PARA FUENTE-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <!--LINK PARA ENLAZAR ARCHIVO CSS-->
+  <!-- CSS combinados -->
   <link rel="stylesheet" href="CSS/inicio.css">
+  <link rel="stylesheet" href="CSS/catalago.css">
+  <!-- JS combinados -->
   <script src="JS/inicio.js" defer></script>
+  <script src="JS/catalogo.js" defer></script>
 </head>
-
-<!--CUERPO DE LA PÁGINA WEB-->
-
+<body class="inicio">
 <body>
-
-  <!--BANNER ANUNCIO-->
-
+  <!-- BANNER SUPERIOR -->
   <div class="banner">
     <div class="banner-content">
       <div class="content-info">
-        <p>
-          <i class="fa-solid fa-phone"></i>
-          +52 (81-26-05-58-24)
-        </p>
+        <p><i class="fa-solid fa-phone"></i> +52 (81-26-05-58-24)</p>
       </div>
-      <p class="envio-express">
-          <i class="fas fa-shipping-fast"></i>
-          ¡Envíos express en Monterrey!
-      </p>
+      <p class="envio-express"><i class="fas fa-shipping-fast"></i> ¡Envíos express en Monterrey!</p>
       <div class="social-links">
-        <a href="#" class="btn-social-link">
-          <i class="fa-brands fa-facebook"></i>
-        </a>
-        <a href="#" class="btn-social-link">
-          <i class="fa-brands fa-instagram"></i>
-        </a>
+        <a href="#" class="btn-social-link"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#" class="btn-social-link"><i class="fa-brands fa-instagram"></i></a>
       </div>
     </div>
   </div>
 
   <!-- MENÚ Y NAVEGACIÓN -->
   <header>
-
     <input type="checkbox" id="toggler">
     <label for="toggler" class="fas fa-bars"></label>
 
-    <a href="#about" class="logofloreria"><img src="Imágenes/Inicio/Bellafiora_logo.png"></a>
+    <a href="#home" class="logofloreria"><img src="Imágenes/Inicio/Bellafiora_logo.png"></a>
 
     <nav class="navbar">
       <a href="#home">Inicio</a>
       <a href="#about">Nosotros</a>
-      
-       <!-- MENÚ CON SUBMENÚ -->
+
       <div class="dropdown">
-      <a href="catalogo.html" class="dropdown-btn">Arreglos Florales</a>
-      <div class="dropdown-content">
-      <a href="#Ramos Florales">Ramos Florales </a>
-      <a href="#Jarrones, Canastas y Cajas Florales">Jarrones, Canastas y Cajas Florales </a>
-      <a href="#San Valentín">San Valentín</a>
-      <a href="#Día de las madres">Día de las madres</a>
-      <a href="#Ocasiones especiales">Ocasiones Especiales</a>
-     </div>
-     </div>
+        <button class="dropdown-btn" type="button" aria-expanded="false">Arreglos Florales</button>
+        <div class="dropdown-content" role="menu">
+          <a href="#ramos-florales" role="menuitem">Ramos Florales</a>
+          <a href="#jarrones-canastas-y-cajas-florales" role="menuitem">Jarrones, Canastas y Cajas Florales</a>
+          <a href="#san-valentin" role="menuitem">San Valentín</a>
+        </div>
+      </div>
+
       <a href="#Contacto">Contacto</a>
     </nav>
 
-    <!--ICONOS - CARRITO DE COMPRAS Y LOGIN-->
     <div class="icons">
-      <a href="carrito.html" class="fas fa-shopping-cart"></a>
-      <a href="#" class="fas fa-user"></a>
+      <a href="carrito.html" class="fas fa-shopping-cart" aria-label="Carrito"></a>
+      <a href="#" class="fas fa-user" aria-label="Cuenta"></a>
     </div>
   </header>
 
-  <!--INICIO SECTION-->
+  <!-- INICIO SECTION -->
   <section class="home" id="home">
-      <!-- CARRUSEL INTERFAZ DE INICIO -->
-  <div class="carousel-background">
-    <div class="slide active">
-      <img src="Imágenes/Inicio/Fondo 1.jpg" alt="Fondo 1 arreglos florales">
+    <div class="carousel-background">
+      <div class="slide active">
+        <img src="Imágenes/Inicio/Fondo 1.jpg" alt="Fondo 1 arreglos florales">
+      </div>
+      <div class="slide">
+        <img src="Imágenes/Inicio/Fondo 2.jpg" alt="Fondo 2 arreglos florales">
+      </div>
+      <div class="slide">
+        <img src="Imágenes/Inicio/Fondo 3.jpg" alt="Fondo 3 arreglos florales">
+      </div>
     </div>
-    <div class="slide">
-      <img src="Imágenes/Inicio/Fondo 2.jpg" alt="Fondo 2 arreglos florales">
-    </div>
-    <div class="slide">
-      <img src="Imágenes/Inicio/Fondo 3.jpg" alt="Fondo 3 arreglos florales">
-    </div>
-  </div>
-
-  <!-- INDICADORES -->
     <div class="carousel-indicators">
       <span class="indicator active" data-slide="0"></span>
       <span class="indicator" data-slide="1"></span>
       <span class="indicator" data-slide="2"></span>
     </div>
-  </div>
 
     <div class="content">
       <h3><em>¡Bienvenidos a Bellafiora!</em></h3>
       <p>Estamos aquí para ayudarte a decir “te quiero”, “gracias” y “estoy contigo” con cada flor</p>
     </div>
-
   </section>
 
-  <!--NOSOTROS SECTION-->
+  <!-- NOSOTROS SECTION -->
   <section class="about" id="about">
-
     <h1 class="heading"><span>Sobre nosotros</span></h1>
-
     <div class="row">
-
       <div class="imagen-container">
         <img src="Imágenes/Inicio/Ramo de flores.jpg">
         <h3>💌Tarjeta con mensaje personalizado</h3>
       </div>
-
       <div class="content">
         <h3>¿Por qué elegirnos?</h3>
         <p>Llevamos más de 20 años creando arte floral y 7 años compartiendo emociones a través de redes sociales.
@@ -124,41 +98,84 @@
         Nuestro equipo de floristas expertos combina tradición e innovación para crear composiciones que no solo decoran espacios, sino que transmiten sentimientos profundos.
         </p>
 
- <div class="features-list">
-    <div class="feature-item">
-      <i class="fas fa-star"></i>
-      <div class="feature-text">
-        <strong>Experiencia floral</strong>
-        <span>Más de 20 años creando arte floral</span>
-      </div>
-    </div>
-    
-    <div class="feature-item">
-      <i class="fas fa-palette"></i>
-      <div class="feature-text">
-        <strong>Diseño personalizado</strong>
-        <span>Cada arreglo cuenta una historia única</span>
-      </div>
-    </div>
-    
-    <div class="feature-item">
-      <i class="fas fa-shield-alt"></i>
-      <div class="feature-text">
-        <strong>Calidad garantizada</strong>
-        <span>Flores frescas y durabilidad</span>
-      </div>
-    </div>
-  </div>
+        <div class="features-list">
+          <div class="feature-item">
+            <i class="fas fa-star"></i>
+            <div class="feature-text">
+              <strong>Experiencia floral</strong>
+              <span>Más de 20 años creando arte floral</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-palette"></i>
+            <div class="feature-text">
+              <strong>Diseño personalizado</strong>
+              <span>Cada arreglo cuenta una historia única</span>
+            </div>
+          </div>
+          <div class="feature-item">
+            <i class="fas fa-shield-alt"></i>
+            <div class="feature-text">
+              <strong>Calidad garantizada</strong>
+              <span>Flores frescas y durabilidad</span>
+            </div>
+          </div>
+        </div>
 
-        <a href="#" class="btn">¡Compra ahora!</a>
+        <a href="#catalogo" class="btn">¡Compra ahora!</a>
       </div>
-
     </div>
   </section>
 
-  <!--ICONOS - ENVÍO, PAGO Y PRODUCTOS EXTRA-->
-  <section class="icons-container">
+  <!-- CATÁLOGO SECTION -->
+  <main class="catalogo" id="catalogo">
+    <h1 class="page-title">Catálogo</h1>
 
+    <div class="catalogo-toolbar">
+      <div class="buscador" role="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="searchInput" type="search" placeholder="Buscar productos…" aria-label="Buscar productos" />
+      </div>
+      <div class="toolbar-meta">
+        <span id="countLabel">0 productos</span>
+      </div>
+    </div>
+
+    <div class="catalogo-layout">
+      <section id="productGrid" aria-live="polite" aria-busy="false">
+        <!-- Tarjetas por JS -->
+      </section>
+    </div>
+  </main>
+
+  <!-- TEMPLATE DE TARJETA -->
+  <template id="tplCard">
+    <article class="card">
+      <div class="card-img-wrap">
+        <img class="card-img" alt="" />
+        <span class="badge-oferta" hidden>EN OFERTA</span>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title"></h4>
+        <p class="card-desc"></p>
+        <div class="card-price-row">
+          <span class="card-price"></span>
+          <span class="card-price-old" hidden></span>
+        </div>
+        <div class="card-cta">
+          <div class="qty" aria-label="Cantidad">
+            <button class="qty-btn" data-act="minus" aria-label="Disminuir">−</button>
+            <input class="qty-input" type="number" min="1" value="1" inputmode="numeric" aria-label="Cantidad" />
+            <button class="qty-btn" data-act="plus" aria-label="Aumentar">+</button>
+          </div>
+          <button class="btn-add" type="button"><i class="fa-solid fa-plus"></i> Agregar</button>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <!-- ICONOS - ENVÍO, PAGO Y PRODUCTOS EXTRA -->
+  <section class="icons-container">
     <div class="icons">
       <img src="Imágenes/Inicio/icono 1.jpg" alt="Entrega a domicilio">
       <div class="content-info">
@@ -166,7 +183,6 @@
         <span>Con costo extra</span>
       </div>
     </div>
-
     <div class="icons">
       <img src="Imágenes/Inicio/icono 2.jpg" alt="Pago contra-entrega y transferencia">
       <div class="content-info">
@@ -174,7 +190,6 @@
         <span>Compra segura</span>
       </div>
     </div>
-
     <div class="icons">
       <img src="Imágenes/Inicio/icono 3.jpg" alt="Productos extra">
       <div class="content-info">
@@ -184,65 +199,49 @@
     </div>
   </section>
 
-<!-- CONTACTO SECTION -->
-<section class="contact" id="Contacto">
-  <h1 class="heading"><span>Contacto</span></h1>
-
-  <div class="row">
-    
-    <!-- INFO DE CONTACTO -->
-    <div class="contact-info">
-      <h3>¡Visítanos!</h3>
-      <div class="info-item">
-        <i class="fas fa-map-marker-alt"></i>
-        <div>
-          <strong>Dirección</strong>
-          <p>Ruperto Martínez 1413-Pte, Centro<br>64000 Monterrey, N.L.</p>
+  <!-- CONTACTO SECTION -->
+  <section class="contact" id="Contacto">
+    <h1 class="heading"><span>Contacto</span></h1>
+    <div class="row">
+      <div class="contact-info">
+        <h3>¡Visítanos!</h3>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <strong>Dirección</strong>
+            <p>Ruperto Martínez 1413-Pte, Centro<br>64000 Monterrey, N.L.</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <div>
+            <strong>Teléfono</strong>
+            <p>+52 (81) 2605-5824</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-clock"></i>
+          <div>
+            <strong>Horarios</strong>
+            <p>Lunes a Viernes: 9:00 AM - 6:00 PM<br>Sábado: 10:00 AM - 4:00 PM</p>
+          </div>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-store"></i>
+          <div>
+            <strong>Bellafiora Florería</strong>
+            <p>Tu floristería de confianza en el corazón de Monterrey</p>
+          </div>
         </div>
       </div>
-      
-      <div class="info-item">
-        <i class="fas fa-phone"></i>
-        <div>
-          <strong>Teléfono</strong>
-          <p>+52 (81) 2605-5824</p>
-        </div>
-      </div>
-      
-      <div class="info-item">
-        <i class="fas fa-clock"></i>
-        <div>
-          <strong>Horarios</strong>
-          <p>Lunes a Viernes: 9:00 AM - 6:00 PM<br>
-             Sábado: 10:00 AM - 4:00 PM</p>
-        </div>
-      </div>
-
-      <div class="info-item">
-        <i class="fas fa-store"></i>
-        <div>
-          <strong>Bellafiora Florería</strong>
-          <p>Tu floristería de confianza en el corazón de Monterrey</p>
-        </div>
+      <div class="map-container">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.347476052902!2d-100.3221659243217!3d25.67283197718404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bdf7c2c27c67%3A0x1a3924e90b13f0f8!2sBellafiora%20Florer%C3%ADa!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" 
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
     </div>
+  </section>
 
-    <!-- MAPA GOOGLE MAPS -->
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3594.347476052902!2d-100.3221659243217!3d25.67283197718404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8662bdf7c2c27c67%3A0x1a3924e90b13f0f8!2sBellafiora%20Florer%C3%ADa!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" 
-        width="100%" 
-        height="100%" 
-        style="border:0;" 
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-
-  </div>
-</section>
-  
 </body>
-
 </html>

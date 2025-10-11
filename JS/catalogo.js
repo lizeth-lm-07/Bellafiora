@@ -10,23 +10,18 @@ document.addEventListener("click", (e) => {
 
 /* ====== DATA ====== */
 const PRODUCTS = [
-  // Ramos Florales
-  { id:"r1", nombre:"Ramo Clásico de Rosas", desc:"12 rosas rojas con follaje y moño de seda", precio:350, categoria:"Ramos Florales", tipo:"Rosas", etiquetas:["Clásico","Rojo"], oferta:false, img:"Imágenes/catalogo/ramoclasicodeflores.jpg" },
-  { id:"g1", nombre:"Bouquet Primavera", desc:"Mezcla de margaritas, tulipanes y girasoles", precio:420, categoria:"Ramos Florales", tipo:"Girasoles", etiquetas:["Mixto"], oferta:true, precioAntes:480, img:"Imágenes/catalogo/bouquetprimavera.jpg" },
-  { id:"t1", nombre:"Tulipanes Pastel", desc:"10 tulipanes combinados tonos suaves", precio:550, categoria:"Ramos Florales", tipo:"Tulipanes", etiquetas:["Pastel"], oferta:false, img:"Imágenes/catalogo/ramosflorales3.jpg" },
-
-  // Jarrones, Canastas y Cajas Florales
-  { id:"j1", nombre:"Jarrón con 15 Girasoles", desc:"Girasoles frescos en jarrón de cristal", precio:900, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Girasoles", etiquetas:["Premium"], oferta:true, precioAntes:990, img:"Imágenes/catalogo/jarrones1.jpg" },
-  { id:"c1", nombre:"Caja Romántica", desc:"Caja negra con 9 rosas preservadas", precio:750, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Rosas", etiquetas:["Premium","Regalo"], oferta:false, img:"Imágenes/catalogo/jarrones2.jpg" },
-
-  // San Valentín (nuevos)
-  { id:"s1", nombre:"Corazón de Rosas", desc:"Arreglo en forma de corazón con rosas rojas", precio:690, categoria:"San Valentín", tipo:"Rosas", etiquetas:["Romántico"], oferta:true, precioAntes:750, img:"Imágenes/catalogo/sanvalentin1.jpg" },
-  { id:"s2", nombre:"Caja con Amor", desc:"Caja con rosas y chocolates", precio:820, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Regalo"], oferta:false, img:"Imágenes/catalogo/sanvalentin2.jpg" },
-  { id:"s3", nombre:"Duo Rosa & Tulipán", desc:"Rosas rojas y tulipanes blancos", precio:760, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Premium"], oferta:false, img:"Imágenes/catalogo/sanvalentin3.jpg" }
+  { id:"r1", nombre:"Ramo Clásico de Rosas", desc:"12 Rosas rojas con follaje y moño de seda", precio:350, categoria:"Ramos Florales", tipo:"Rosas", etiquetas:["Clásico","Rojo"], oferta:false, img:"Imágenes/catalogo/ramoclasicodeflores.jpg" },
+  { id:"g1", nombre:"Bouquet Primavera", desc:"Mezcla de Rosas en tono rosa pastel, Lilies y follaje", precio:420, categoria:"Ramos Florales", tipo:"Girasoles", etiquetas:["Mixto"], oferta:true, precioAntes:480, img:"Imágenes/catalogo/bouquetprimavera.jpg" },
+  { id:"t1", nombre:"Gerberas Coloridas", desc:"Ramo colorido de 12 Gerberas", precio:550, categoria:"Ramos Florales", tipo:"Tulipanes", etiquetas:["Pastel"], oferta:false, img:"Imágenes/catalogo/ramosflorales3.jpg" },
+  { id:"j1", nombre:"Caja Belleza Pastel", desc:"6 Gerberas, 10 rosas, Claveles y follaje", precio:900, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Girasoles", etiquetas:["Premium"], oferta:true, precioAntes:990, img:"Imágenes/catalogo/jarrones1.jpg" },
+  { id:"c1", nombre:"Jarrón Alegría", desc:" Combinación de 10 rosas con Claveles", precio:750, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Rosas", etiquetas:["Premium","Regalo"], oferta:false, img:"Imágenes/catalogo/jarrones2.jpg" },
+  { id:"s1", nombre:"Amor Clásico", desc:"Ramo de 24 Rosas rojas, 1 Girasol y Chocalates Ferrerro Rocher", precio:690, categoria:"San Valentín", tipo:"Rosas", etiquetas:["Romántico"], oferta:true, precioAntes:750, img:"Imágenes/catalogo/sanvalentin1.jpg" },
+  { id:"s2", nombre:"Corazón de Amor", desc:"Caja con 18 Rosas rojas y chocolates Ferrerro Rocher", precio:820, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Regalo"], oferta:false, img:"Imágenes/catalogo/sanvalentin2.jpg" },
+  { id:"s3", nombre:"Duo Rosa & Tulipán", desc:" Caja con 25 Rosas rojas y Chocolates Ferrerro Rocher", precio:760, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Premium"], oferta:false, img:"Imágenes/catalogo/sanvalentin3.jpg" }
 ];
 
 /* ====== ELEMENTOS ====== */
-const $grid   = document.getElementById("productGrid"); // contenedor general donde van las secciones
+const $grid   = document.getElementById("productGrid");
 const $search = document.getElementById("searchInput");
 const $count  = document.getElementById("countLabel");
 const tpl     = document.getElementById("tplCard");
@@ -58,10 +53,7 @@ function render(){
 
   SECCIONES.forEach(cat => {
     let items = filtrados.filter(p => p.categoria === cat);
-
-    // cuando NO hay búsqueda, limitar a 4 por sección para dar variedad
-    if (!state.texto) items = items.slice(0, 4);
-
+    if (!state.texto) items = items.slice(0, 4); // limitar si no hay búsqueda
     if (items.length === 0) return;
 
     const section = document.createElement("section");
@@ -96,11 +88,10 @@ function render(){
   $grid.setAttribute("aria-busy","false");
 }
 
+/* ====== CREA TARJETA Y CONEXIÓN AL CARRITO ====== */
 function buildCard(p){
   const $card = tpl.content.cloneNode(true);
-
   const img = $card.querySelector(".card-img");
-  // Placeholder si no hay imagen
   img.src = p.img || "https://placehold.co/600x450?text=Flores";
   img.alt = p.nombre;
 
@@ -125,9 +116,27 @@ function buildCard(p){
     });
   });
 
+  // ✅ Agregar producto al carrito y sincronizar con localStorage
   $card.querySelector(".btn-add").addEventListener("click", (ev) => {
-    const cantidad = parseInt($qty.value||1,10);
-    console.log("Agregar:", { id: p.id, cantidad });
+    const cantidad = parseInt($qty.value || 1, 10);
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const existente = carrito.find(item => item.id === p.id);
+    if(existente){
+      existente.cantidad += cantidad;
+    } else {
+      carrito.push({
+        id: p.id,
+        nombre: p.nombre,
+        precio: p.precio,
+        imagen: p.img,
+        cantidad
+      });
+    }
+
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // Feedback visual
     const btn = ev.currentTarget;
     btn.innerHTML = '<i class="fa-solid fa-check"></i> Agregado';
     btn.disabled = true;
@@ -140,11 +149,11 @@ function buildCard(p){
   return $card;
 }
 
+/* ====== UTILIDADES ====== */
 function idFromTitle(t){
-  // ids sin espacios ni acentos para anclaje desde el menú
   return t
     .toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "") // quita acentos
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
     .replace(/\s+/g, "-")
     .replace(/[^\w\-]+/g, "");
 }
@@ -152,7 +161,7 @@ function idFromTitle(t){
 /* ====== ARRANQUE ====== */
 render();
 
-// si entras con hash (#san-valentin), hace scroll suave a esa sección
+// Scroll suave si entra con hash
 if (location.hash) {
   const tgt = document.querySelector(location.hash);
   if (tgt) tgt.scrollIntoView({ behavior: "smooth" });

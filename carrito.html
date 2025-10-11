@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="CSS/carrito.css"><!-- estilos del carrito -->
   <script src="JS/carrito.js" defer></script><!-- lógica del carrito -->
 </head>
+<body class="carrito">
 
 <body>
   <!-- BANNER -->
@@ -42,8 +43,7 @@
           <a href="#">Ramos Florales</a>
           <a href="#">Jarrones, Canastas y Cajas</a>
           <a href="#">San Valentín</a>
-          <a href="#">Día de las Madres</a>
-          <a href="#">Ocasiones Especiales</a>
+
         </div>
       </div>
       <a href="index.html#Contacto">Contacto</a>
@@ -61,47 +61,6 @@
     <div class="cart-grid">
       <!-- LISTA DE PRODUCTOS -->
       <section class="cart-items">
-
-        <!-- ITEM -->
-        <article class="cart-item" data-price="289" data-id="GASTCE-AM">
-          <div class="item-media">
-            <img src="Imágenes/Productos/ramo_demo.png" alt="Ramo Bellafiora">
-          </div>
-
-          <div class="item-info">
-            <h2 class="item-name">Ramo Premium Rosa Pastel</h2>
-            <p class="item-sku">DESCUENTO: <span>-25%</span></p>
-
-            <div class="item-variants">
-              <label>
-                Color:
-                <select class="item-color">
-                  <option>Natural</option>
-                  <option>Rosa</option>
-                  <option>Blanco</option>
-                </select>
-              </label>
-            </div>
-          </div>
-
-          <div class="item-price">
-            <div class="unit">
-              <span class="old-price">$389.00</span>
-              <span class="current-price">$289.00</span>
-            </div>
-          </div>
-
-          <div class="item-qty">
-            <button class="qty-btn minus" aria-label="Restar">−</button>
-            <input type="number" class="qty-input" min="1" value="1" inputmode="numeric" />
-            <button class="qty-btn plus" aria-label="Sumar">+</button>
-          </div>
-
-          <div class="item-total">
-            <span class="line-total">$289.00</span>
-            <button class="remove-item" title="Quitar"><i class="fa-solid fa-trash-can"></i></button>
-          </div>
-        </article>
       </section>
 
       <!-- RESUMEN / ENVÍO -->
@@ -123,7 +82,7 @@
         </div>
 
         <div class="actions">
-          <a href="index.html#home" class="btn btn-ghost"><i class="fa-solid fa-arrow-left"></i> Continuar comprando</a>
+          <a href="index.html#ramos-florales" class="btn btn-ghost"><i class="fa-solid fa-arrow-left"></i> Continuar comprando</a>
           <button id="clearCart" class="btn btn-light">Vaciar carrito</button>
           <button id="checkout" class="btn btn-primary"><i class="fa-solid fa-lock"></i> Proceder al Checkout</button>
         </div>
