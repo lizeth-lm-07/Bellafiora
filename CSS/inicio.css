@@ -562,7 +562,7 @@ header {
   box-shadow: 0 4px 20px var(--sombra-clara);
   border: 3px solid var(--rosa);
   display: flex;
-  margin-top: 10.8rem ;
+  margin-top:4rem ;
 }
 
 /* ========== COMPONENTES REUTILIZABLES ========== */
