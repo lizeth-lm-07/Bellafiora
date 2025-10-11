@@ -43,7 +43,7 @@ function updateLocalStorage(article){
     prod.cantidad = Number(article.querySelector('.qty-input').value);
     setCart(carrito);
   }
-  renderRightPanelCustom(); // por si quieres considerar cantidades en el resumen
+  renderRightPanelItemsList(); // actualizar listado del panel derecho
 }
 
 // Elimina un producto
@@ -51,7 +51,7 @@ function removeFromLocalStorage(id){
   let carrito = getCart();
   carrito = carrito.filter(p => p.id !== id);
   setCart(carrito);
-  renderRightPanelCustom();
+  renderRightPanelItemsList();
 }
 
 // ========================
@@ -79,7 +79,7 @@ function mapKeyForProduct(p){
   return null;
 }
 
-// Resumen debajo de cada artículo
+// Resumen debajo de cada artículo (se mantiene)
 function updateCustomSummary(article, custom){
   const box = article.querySelector('.custom-summary');
   if (!box) return;
@@ -99,36 +99,28 @@ function updateCustomSummary(article, custom){
   }
 }
 
-// 🔹 Construye el texto para el panel derecho
-function buildRightPanelText(){
+/* ================================
+   PANEL DERECHO: LISTA DE ARTÍCULOS
+   Usa <ul id="resumen-items">
+==================================*/
+function renderRightPanelItemsList(){
+  const ul = document.getElementById('resumen-items');
+  if(!ul) return;
+
   const carrito = getCart();
-  const parts = [];
+  ul.innerHTML = '';
 
-  carrito.forEach(it => {
-    const opts = it.custom ? Object.entries(it.custom)
-      .filter(([,v]) => v)
-      .map(([k,v]) => `${k.replace(/_/g,' ')}: ${v}`) : [];
-
-    if (opts.length){
-      parts.push(`${it.nombre.toLowerCase()}: ${opts.join(', ')}`);
-    }
-  });
-
-  return parts.join(' · ');
-}
-
-// 🔹 Pinta/oculta el resumen en el panel derecho
-function renderRightPanelCustom(){
-  const el = document.getElementById('customSummary');
-  if (!el) return;
-  const txt = buildRightPanelText();
-  if (txt){
-    el.textContent = `(${txt})`;
-    el.style.display = 'inline-block';
-  } else {
-    el.textContent = '';
-    el.style.display = 'none';
+  if(!carrito || carrito.length === 0){
+    ul.innerHTML = '<li>Tu carrito está vacío</li>';
+    return;
   }
+
+  carrito.forEach(it=>{
+    const li = document.createElement('li');
+    const qty = Number(it.cantidad || 1);
+    li.textContent = `[${qty}] ${it.nombre || 'Artículo'}`;
+    ul.appendChild(li);
+  });
 }
 
 // Inyecta los selects para el artículo (si aplica) y enlaza eventos
@@ -171,7 +163,7 @@ function attachCustomization(article, p){
         prodC.custom[sel.name] = sel.value;
         setCart(carritoC);
         updateCustomSummary(article, prodC.custom);
-        renderRightPanelCustom(); // 🔸 actualizar panel derecho
+        renderRightPanelItemsList(); // actualizar panel derecho
       }
     });
   });
@@ -180,7 +172,7 @@ function attachCustomization(article, p){
   const carritoD = getCart();
   const prodD = carritoD.find(x => x.id === p.id) || {};
   updateCustomSummary(article, (prodD.custom || {}));
-  renderRightPanelCustom();
+  renderRightPanelItemsList();
 }
 
 // ========================
@@ -237,7 +229,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
       article.dataset.price = p.precio;
       article.dataset.id = p.id;
 
-                  article.innerHTML = `        <div class="item-media"><img src="${p.imagen}" alt="${p.nombre}"></div>
+      article.innerHTML = `
+        <div class="item-media"><img src="${p.imagen}" alt="${p.nombre}"></div>
         <div class="item-info">
           <h2 class="item-name">${p.nombre} ${ (p.precioOriginal && p.precioOriginal>p.precio) ? `<span class="badge-oferta">-${Math.round((1 - (p.precio / p.precioOriginal))*100)}%</span>` : `` }</h2>
           <p class="item-sku">DESCUENTO: <span>${ (p.precioOriginal && p.precioOriginal>p.precio) ? (Math.round((1 - (p.precio / p.precioOriginal))*100) + '% aplicado automáticamente') : '0% de descuento' }</span></p>
@@ -262,10 +255,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
       contenedor.appendChild(article);
 
-      // --- Personalización (sólo 2 arreglos) ---
+      // Personalización (sólo 2 arreglos)
       attachCustomization(article, p);
 
-      // --- Eventos de cantidad / eliminar ---
+      // Eventos de cantidad / eliminar
       bindItem(article);
     });
   }
@@ -273,7 +266,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // Envío
   document.getElementById('shippingSelect').addEventListener('change', ()=>{
     refresh();
-    renderRightPanelCustom();
+    renderRightPanelItemsList();
   });
 
   // Vaciar carrito
@@ -281,11 +274,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.querySelectorAll('.cart-item').forEach(e=>e.remove());
     localStorage.removeItem('carrito');
     refresh();
-    renderRightPanelCustom();
+    renderRightPanelItemsList();
     contenedor.innerHTML = '<p>Tu carrito está vacío 🛒</p>';
   });
 
-  // Checkout (ejemplo: muestra lo que se enviaría)
+  // Checkout (demo)
   document.getElementById('checkout').addEventListener('click', ()=>{
     const carrito = getCart();
     const resumen = carrito.map(it => {
@@ -299,5 +292,5 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   // Primer render
   refresh();
-  renderRightPanelCustom();
+  renderRightPanelItemsList();
 });
