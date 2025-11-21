@@ -460,22 +460,20 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   }
 
-  // Checkout (demo)
+  // 🔥 CONEXIÓN AL CHECKOUT
   const checkoutBtn = document.getElementById('checkout');
   if(checkoutBtn){
     checkoutBtn.addEventListener('click', ()=>{
       const carrito = getCart();
-      const resumen = carrito.map(it => {
-        const key  = mapKeyForProduct(it);
-        const pair = (it.custom && typeof it.custom === 'object')
-          ? Object.entries(it.custom).filter(([,v])=>v && String(v).trim()!=='')
-              .map(([k,v])=>`${k}: ${v}`).join(' · ')
-          : '';
-        const customTxt = key ? (pair || 'Sin personalización') : '—';
-        return `• ${it.nombre} x${it.cantidad} — ${customTxt}`;
-      }).join('\n');
-
-      alert('Resumen a enviar:\n\n' + resumen);
+      
+      // Verificar que el carrito no esté vacío
+      if (!carrito || carrito.length === 0) {
+        alert('Tu carrito está vacío. Agrega productos antes de continuar.');
+        return;
+      }
+      
+      // Redirigir al checkout
+      window.location.href = 'checkout.html';
     });
   }
-});
+}); // ⬅️ Esta llave cierra el DOMContentLoaded
