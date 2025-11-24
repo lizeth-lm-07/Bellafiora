@@ -493,6 +493,20 @@ function setupMinDate() {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Checkout inicializado');
 
+  // 🔐 Verificar usuario logueado
+  const currentUser = typeof getCurrentUser === "function" ? getCurrentUser() : null;
+
+  if (!currentUser) {
+    alert('Debes iniciar sesión para continuar con el checkout.');
+    window.location.href = 'index.html';
+    return;
+  }
+
+  const nombre = document.getElementById('nombre');
+  const email = document.getElementById('email');
+  if (nombre && currentUser.name) nombre.value = currentUser.name;
+  if (email && currentUser.email) email.value = currentUser.email;
+
   // Verificar carrito
   const cart = getCart();
   if (cart.length === 0) {

@@ -8,8 +8,63 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
   <link rel="stylesheet" href="CSS/inicio.css">
   <link rel="stylesheet" href="CSS/checkout.css">
+  <link rel="stylesheet" href="CSS/auth.css">
+
+  <script src="JS/auth.js" defer></script>
   <script src="JS/checkout-page.js" defer></script>
 </head>
+
+<!-- MODAL LOGIN / REGISTRO -->
+<div class="auth-modal hidden" id="authModal">
+  <div class="auth-modal-backdrop"></div>
+
+  <div class="auth-modal-dialog">
+    <button class="auth-close" id="authCloseBtn" type="button">
+      <i class="fas fa-times"></i>
+    </button>
+
+    <h2 class="auth-title">Mi cuenta</h2>
+
+    <div class="auth-tabs">
+      <button class="auth-tab auth-tab-active" data-auth-tab="login">Iniciar sesión</button>
+      <button class="auth-tab" data-auth-tab="signup">Crear cuenta</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form id="loginForm" class="auth-form auth-form-active">
+      <div class="auth-group">
+        <label for="loginEmail">Correo electrónico</label>
+        <input type="email" id="loginEmail" placeholder="ejemplo@correo.com" required>
+      </div>
+      <div class="auth-group">
+        <label for="loginPassword">Contraseña</label>
+        <input type="password" id="loginPassword" placeholder="Tu contraseña" required>
+      </div>
+      <p class="auth-msg" id="loginMsg"></p>
+      <button type="submit" class="auth-btn-primary">Entrar</button>
+    </form>
+
+    <!-- SIGN UP -->
+    <form id="signupForm" class="auth-form">
+      <div class="auth-group">
+        <label for="signupName">Nombre completo</label>
+        <input type="text" id="signupName" placeholder="Ej: María García López" required>
+      </div>
+      <div class="auth-group">
+        <label for="signupEmail">Correo electrónico</label>
+        <input type="email" id="signupEmail" placeholder="ejemplo@correo.com" required>
+      </div>
+      <div class="auth-group">
+        <label for="signupPassword">Contraseña</label>
+        <input type="password" id="signupPassword" placeholder="Mínimo 6 caracteres" required>
+      </div>
+      <p class="auth-msg" id="signupMsg"></p>
+      <button type="submit" class="auth-btn-primary">Crear cuenta</button>
+    </form>
+  </div>
+</div>
+
+
 <body class="checkout-page">
 
   <!-- BANNER -->
@@ -47,9 +102,15 @@
     </nav>
 
     <div class="icons">
-      <a href="carrito.html" class="fas fa-shopping-cart"></a>
-      <a href="#" class="fas fa-user"></a>
-    </div>
+  <a href="carrito.html" class="fas fa-shopping-cart" aria-label="Carrito"></a>
+  <a href="#" class="fas fa-user" aria-label="Cuenta" id="headerUserBtn"></a>
+  <span id="headerUserLabel" style="display:none; font-size:1.4rem; margin-left:0.5rem;"></span>
+  <button id="logoutBtn" style="display:none; font-size:1.2rem; margin-left:0.5rem; background:none; border:none; cursor:pointer;">
+    Cerrar sesión
+  </button>
+</div>
+
+
   </header>
 
   <!-- CHECKOUT MAIN -->
