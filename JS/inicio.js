@@ -113,3 +113,19 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+function updateCartBadge() {
+  const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  const totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+  const badge = document.getElementById("cart-count");
+
+  if (!badge) return;
+
+  if (totalItems > 0) {
+    badge.textContent = totalItems;
+    badge.style.display = "flex";
+  } else {
+    badge.style.display = "none";
+  }
+}
+
+document.addEventListener("DOMContentLoaded", updateCartBadge);

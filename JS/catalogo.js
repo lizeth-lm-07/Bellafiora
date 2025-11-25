@@ -10,14 +10,15 @@ document.addEventListener("click", (e) => {
 
 /* ====== DATA ====== */
 const PRODUCTS = [
-  { id:"r1", nombre:"Ramo Clásico de Rosas", desc:"12 Rosas rojas con follaje y moño de seda", precio:350, categoria:"Ramos Florales", tipo:"Rosas", etiquetas:["Clásico","Rojo"], oferta:false, img:"Imágenes/catalogo/ramoclasicodeflores.jpg" },
-  { id:"g1", nombre:"Bouquet Primavera", desc:"Mezcla de Rosas en tono rosa pastel, Lilies y follaje", precio:420, categoria:"Ramos Florales", tipo:"Girasoles", etiquetas:["Mixto"], oferta:true, precioAntes:480, img:"Imágenes/catalogo/bouquetprimavera.jpg" },
-  { id:"t1", nombre:"Gerberas Coloridas", desc:"Ramo colorido de 12 Gerberas", precio:550, categoria:"Ramos Florales", tipo:"Tulipanes", etiquetas:["Pastel"], oferta:false, img:"Imágenes/catalogo/ramosflorales3.jpg" },
-  { id:"j1", nombre:"Caja Belleza Pastel", desc:"6 Gerberas, 10 rosas, Claveles y follaje", precio:900, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Girasoles", etiquetas:["Premium"], oferta:true, precioAntes:990, img:"Imágenes/catalogo/jarrones1.jpg" },
-  { id:"c1", nombre:"Jarrón Alegría", desc:" Combinación de 10 rosas con Claveles", precio:750, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Rosas", etiquetas:["Premium","Regalo"], oferta:false, img:"Imágenes/catalogo/jarrones2.jpg" },
-  { id:"s1", nombre:"Amor Clásico", desc:"Ramo de 24 Rosas rojas, 1 Girasol y Chocalates Ferrerro Rocher", precio:690, categoria:"San Valentín", tipo:"Rosas", etiquetas:["Romántico"], oferta:true, precioAntes:750, img:"Imágenes/catalogo/sanvalentin1.jpg" },
-  { id:"s2", nombre:"Corazón de Amor", desc:"Caja con 18 Rosas rojas y chocolates Ferrerro Rocher", precio:820, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Regalo"], oferta:false, img:"Imágenes/catalogo/sanvalentin2.jpg" },
-  { id:"s3", nombre:"Duo Rosa & Tulipán", desc:" Caja con 25 Rosas rojas y Chocolates Ferrerro Rocher", precio:760, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Premium"], oferta:false, img:"Imágenes/catalogo/sanvalentin3.jpg" }
+  { id:"r1", nombre:"Ramo Clásico de Rosas", desc:"Rosas, Alstroemerias y Follaje", precio:350, categoria:"Ramos Florales", tipo:"Rosas", etiquetas:["Clásico","Rojo"], oferta:false, img:"Imágenes/catalogo/ramoclasicodeflores.jpg" },
+  { id:"g1", nombre:"Bouquet Primavera", desc:"Mezcla de Rosas, Lilis, Alstroemerias y Follaje", precio:420, categoria:"Ramos Florales", tipo:"Girasoles", etiquetas:["Mixto"], oferta:true, precioAntes:480, img:"Imágenes/catalogo/bouquetprimavera.jpg" },
+  { id:"t1", nombre:"Gerberas Coloridas", desc:"Ramo colorido de Gerberas y Follaje", precio:550, categoria:"Ramos Florales", tipo:"Tulipanes", etiquetas:["Pastel"], oferta:false, img:"Imágenes/catalogo/ramosflorales3.jpg" },
+  { id:"j1", nombre:"Caja Belleza Pastel", desc:" Gerberas, Rosas, Claveles y Follaje", precio:900, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Girasoles", etiquetas:["Premium"], oferta:true, precioAntes:990, img:"Imágenes/catalogo/jarrones1.jpg" },
+  { id:"c1", nombre:"Jarrón Alegría", desc:" Combinación de Rosas con Claveles, Alstroemerias y Follaje ", precio:750, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Rosas", etiquetas:["Premium","Regalo"], oferta:false, img:"Imágenes/catalogo/jarrones2.jpg" },
+  { id:"c2", nombre:"Canasta Floral", desc:" Combinación de Rosas, Dalias, Crisantemos, Alstroemerias y Follaje", precio:1200, categoria:"Jarrones, Canastas y Cajas Florales", tipo:"Rosas", etiquetas:["Premium","Regalo"], oferta:false, img:"Imágenes/catalogo/jarrones3.jpg" },
+  { id:"s1", nombre:"Amor Clásico", desc:"Ramo de Rosas, 1 Flor extra, Chocolates y Follaje", precio:690, categoria:"San Valentín", tipo:"Rosas", etiquetas:["Romántico"], oferta:true, precioAntes:750, img:"Imágenes/catalogo/sanvalentin1.jpg" },
+  { id:"s2", nombre:"Corazón de Amor", desc:"Caja o ramo con Rosas, Chocolates y Follaje", precio:820, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Regalo"], oferta:false, img:"Imágenes/catalogo/sanvalentin2.jpg" },
+  { id:"s3", nombre:"Amor y Chocolates", desc:" Caja o ramo con Rosas, Chocolates y Follaje", precio:760, categoria:"San Valentín", tipo:"Mixto", etiquetas:["Premium"], oferta:false, img:"Imágenes/catalogo/sanvalentin3.jpg" }
 ];
 
 /* ====== ELEMENTOS ====== */
@@ -137,6 +138,9 @@ function buildCard(p){
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // 🔹 LLAMADA IMPORTANTE: Actualiza el numerito del carrito
+   updateCartBadge();
 
     // Feedback visual
     const btn = ev.currentTarget;

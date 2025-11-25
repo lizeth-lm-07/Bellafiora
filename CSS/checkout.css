@@ -167,6 +167,9 @@
   font-size: 1.5rem;
   color: var(--gris-oscuro);
 }
+body.checkout-page header {
+  top: 20px;
+}
 
 /* ==========================================
    FORMULARIOS

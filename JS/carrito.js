@@ -54,15 +54,69 @@ function refresh(){
 // ========================
 const CUSTOM_OPTIONS = {
   'bouquet-primavera': [
-    {name:'rosas',    label:'Rosas (color)', options:['Rojas','Blancas']},
-    {name:'lilis',    label:'Lilis (color)', options:['Rosas','Moradas','Blancas']},
-    {name:'papel',    label:'Papel',         options:['Coreano','Corrugado','Kraft']},
+    {name:'Rosas',    label:'15 Rosas (color)', options:['Rojas','Rosas pastel', 'Blancas']},
+    {name:'Lilis',    label:'5 Lilis (color)', options:['Rosas pastel','Moradas','Blancas']},
+    {name:'Alstroemerias', label:'7 Alstroemerias (color)', options:['Rosas pastel','Blancas']},
+    {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Limonium','No']},
+    {name:'Envoltura',    label:'Papel', options:['Coreano','Kraft','Encerado']},
+    
   ],
   'caja-belleza-pastel': [
-    {name:'rosas',     label:'Rosas (color)',   options:['Rosas pastel','Blancas','Champagne']},
-    {name:'gerberas',  label:'Gerberas (color)',options:['Fucsia','Rosa claro','Blancas']},
-    {name:'envoltura', label:'Papel / Caja',    options:['Caja pastel beige','Caja rosa pálido','Papel kraft']},
+    {name:'Rosas',     label:'12 Rosas (color)', options:['Rosas pastel','Rosas fuerte','Melocotón']},
+    {name:'Gerberas',  label:'6 Gerberas (color)',options:['Magentas','Rosas pastel','Blancas']},
+    {name:'Claveles', label:'10 Claveles (color)', options:['Rosas pastel','Blancas']},
+    {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Limonium','No']},
+    {name:'Envoltura', label:'Caja / Papel', options:['Caja circular (cartón): color y diseño aleatorio', 'Caja circular (plástica): color y diseño aleatorio','Papel Coreano', 'Papel Kraft', 'Papel Encerado']},
   ],
+  'ramo-clasico-de-rosas': [
+    {name:'Rosas',     label:'24 Rosas (color)',   options:['Rojas','Blancas','Mix #1: Rosas pastel y Lilas','Mix #2: Amarillas Y Blancas', 'Mix #3: Rojas Y Blancas']},
+    {name:'Alstroemerias', label:'7 Alstroemerias (color)', options:['Rosa pastel','Blancas']},
+    {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Ruscus','No']},
+    {name:'Envoltura', label:'Papel', options:['Coreano','Kraft','Encerado']},
+  ],
+  'gerberas-coloridas': [
+    {name:'Gerberas',     label:'15 Gerberas (color)',   options:['Mix #1: Rojas, Blancas, Amarillas, Naranjas', 'Mix #2: Rojas, Fucsias, Moradas, Naranjas', 'Mix #3: Rosas pastel, Azul cielo, Lilas, Blancas']},
+    {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Ruscus','No']},
+    {name:'Envoltura', label:'Papel',    options:['Coreano','Kraft','Encerado']},
+  ],
+  'jarron-alegria': [
+    {name:'Rosas', label:'8 Rosas (color)', options:['Rosas fuerte','Rosas pastel','Melocotón']},
+    {name:'Claveles', label:'6 Claveles (color)', options:['Rosas pastel','Blancas']},
+    {name:'Alstroemerias', label:'8 Alstroemerias (color)', options:['Rosa pastel','Blancas','Amarillas']},
+    {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Limonium','No']},
+    {name:'Envoltura', label:'Papel',    options:['Coreano','Kraft','Encerado']},
+  ],
+  'canasta-floral': [
+    {name:'Rosas', label:'8 Rosas (color)', options:['Rosas fuerte','Rosas pastel','Melocotón']},
+    {name:'Dalias', label:'15 Dalias (color)', options:['Rosas fuerte','Rosas pastel','Melocotón','Lilas']},
+    {name:'Crisantemos', label:'6 Crisantemos (color)', options:['Blancos','Rosas pastel','Melocotón']},
+    {name:'Alstroemerias', label:'8 Alstroemerias (color)', options:['Rosa pastel','Lilas','Blancas','Amarillas']},
+    {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Limonium, Pittosporum','No']},
+    {name:'Envoltura', label:'Canasta',    options:['Mimbre (forma y color aleatorio)','Cartón rígido (forma y color aleatorio)','Madera (forma y color aleatorio)']},
+
+  ],
+  'amor-clasico': [
+   {name:'Rosas', label:'30 Rosas (color)', options:['Rojas','Rosas fuerte','Rosas pastel','Melocotón']},
+   {name:'Flor extra', label:'1 Flor extra (color aleatorio)', options:['Girasol','Lili','Gerbera']},
+   {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Limonium','No']},
+   {name:'Golosinas',    label:'Chocolates', options:['5 Ferrero Rocher','5 Rafaello']},
+   {name:'Envoltura', label:'Papel', options:['Papel Coreano', 'Papel Kraft', 'Papel Encerado']},
+    
+  ],
+  'corazon-de-amor': [
+   {name:'Rosas', label:'24 Rosas (color)', options:['Rojas','Rosas fuerte','Rosas pastel','Melocotón']},
+   {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Limonium','No']},
+   {name:'Golosinas',    label:'Chocolates', options:['12 Ferrero Rocher','12 Rafaello']},
+   {name:'Envoltura', label:'Caja / Papel', options:['Caja corazón (cartón rígido): color y diseño aleatorio', 'Caja corazón (plástica): color y diseño aleatorio','Papel Coreano', 'Papel Kraft', 'Papel Encerado']},
+    
+  ],
+  'amor-y-chocolates': [
+   {name:'Rosas', label:'20 Rosas (color)', options:['Rojas','Rosas fuerte','Rosas pastel','Melocotón']},
+   {name:'Follaje',    label:'Follaje', options:['Si: Eucalipto cinerea, Limonium','No']},
+   {name:'Golosinas',    label:'Chocolates', options:['8 Ferrero Rocher','8 Rafaello']},
+   {name:'Envoltura', label:'Caja / Papel', options:['Caja cuadrada (cartón rígido): color y diseño aleatorio', 'Caja cuadrada (plástica): color y diseño aleatorio','Papel Coreano', 'Papel Kraft', 'Papel Encerado']},
+  ],
+  
 };
 
 // mapea el set de opciones por id o por nombre
@@ -71,6 +125,13 @@ function mapKeyForProduct(p){
   const name = (p.nombre || '').toLowerCase();
   if (name.includes('bouquet') && name.includes('primavera')) return 'bouquet-primavera';
   if (name.includes('belleza') && name.includes('pastel'))     return 'caja-belleza-pastel';
+  if (name.includes('ramo') && name.includes('rosas'))     return 'ramo-clasico-de-rosas';
+  if (name.includes('gerberas') && name.includes('coloridas'))     return 'gerberas-coloridas';
+  if (name.includes('jarrón') && name.includes('alegría'))     return 'jarron-alegria';
+  if (name.includes('canasta') && name.includes('floral'))     return 'canasta-floral';
+  if (name.includes('corazón') && name.includes('de amor'))     return 'corazon-de-amor';
+  if (name.includes('amor') && name.includes('clásico'))     return 'amor-clasico';
+  if (name.includes('amor') && name.includes('y chocolates'))     return 'amor-y-chocolates';
   return null;
 }
 
@@ -98,6 +159,9 @@ function removeFromLocalStorage(lineId){
   carrito = carrito.filter(p => p.lineId !== lineId);
   setCart(carrito);
   renderRightPanelItemsList();
+
+ updateCartBadge(); // 🔥 ESTA LÍNEA
+
 }
 
 // Duplicar renglón
@@ -477,3 +541,45 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
   }
 }); // ⬅️ Esta llave cierra el DOMContentLoaded
+
+// ==========================
+// Mostrar badge en carrito
+// ==========================
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem("carrito")) || [];
+  const count = cart.length;
+
+  const icon = document.getElementById("cart-icon");
+  if (!icon) return;
+
+  // Si no existe la burbuja, la creamos
+  let badge = document.getElementById("cart-badge");
+
+  if (!badge) {
+    badge = document.createElement("span");
+    badge.id = "cart-badge";
+    badge.style.position = "absolute";
+    badge.style.top = "-8px";
+    badge.style.right = "-10px";
+    badge.style.background = "#e63970";
+    badge.style.color = "white";
+    badge.style.fontSize = "12px";
+    badge.style.borderRadius = "50%";
+    badge.style.padding = "2px 6px";
+    badge.style.fontWeight = "bold";
+
+    // Hacemos el icono un contenedor
+    icon.style.position = "relative";
+    icon.appendChild(badge);
+  }
+
+  if (count > 0) {
+    badge.style.display = "inline-block";
+    badge.textContent = count;
+  } else {
+    badge.style.display = "none";
+  }
+}
+
+// Ejecutar cuando cargue la página
+document.addEventListener("DOMContentLoaded", updateCartBadge);
