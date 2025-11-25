@@ -160,7 +160,7 @@ function removeFromLocalStorage(lineId){
   setCart(carrito);
   renderRightPanelItemsList();
 
- updateCartBadge(); // 🔥 ESTA LÍNEA
+ updateCartBadge(); 
 
 }
 
@@ -508,9 +508,25 @@ document.addEventListener('DOMContentLoaded', ()=>{
     shipSel.addEventListener('change', ()=>{
       refresh();
       renderRightPanelItemsList();
+      
+      // ⭐ GUARDAR opción de envío
+      const shippingData = {
+        type: shipSel.value === '0' ? 'pickup' : 'home',
+        cost: Number(shipSel.value)
+      };
+      localStorage.setItem('shippingOption', JSON.stringify(shippingData));
+      console.log('💾 Opción de envío guardada:', shippingData);
     });
+    
+    // ⭐ CARGAR opción guardada al iniciar
+    const savedShipping = localStorage.getItem('shippingOption');
+    if (savedShipping) {
+      const data = JSON.parse(savedShipping);
+      shipSel.value = data.cost.toString();
+      console.log('✅ Opción de envío recuperada:', data);
+      refresh(); // Actualizar totales con el valor recuperado
+    }
   }
-
   // Vaciar carrito
   const clearBtn = document.getElementById('clearCart');
   if(clearBtn){

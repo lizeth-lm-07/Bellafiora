@@ -1,8 +1,10 @@
 // ==========================================
-// CHECKOUT-PAGE.JS 
+// CHECKOUT-PAGE.JS - VERSIÓN COMPLETA CORREGIDA
 // ==========================================
 
-// Utilidades
+// ==========================================
+// UTILIDADES
+// ==========================================
 const money = n => n.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
 
 // ==========================================
@@ -14,6 +16,33 @@ function getCart() {
 
 function setCart(cart) {
   localStorage.setItem('carrito', JSON.stringify(cart));
+}
+
+// ==========================================
+// BADGE DEL CARRITO (para el header)
+// ==========================================
+function updateCartBadge() {
+  const cart = getCart();
+  const count = cart.length;
+  const badge = document.getElementById("cartBadge");
+  
+  if (badge) {
+    if (count > 0) {
+      badge.style.display = "inline-block";
+      badge.textContent = count;
+      badge.style.position = "absolute";
+      badge.style.top = "-8px";
+      badge.style.right = "-10px";
+      badge.style.background = "#e63970";
+      badge.style.color = "white";
+      badge.style.fontSize = "12px";
+      badge.style.borderRadius = "50%";
+      badge.style.padding = "2px 6px";
+      badge.style.fontWeight = "bold";
+    } else {
+      badge.style.display = "none";
+    }
+  }
 }
 
 // ==========================================
@@ -62,7 +91,7 @@ function loadCartSummary() {
   const summaryContainer = document.getElementById('summaryItems');
   
   if (!summaryContainer) {
-    console.error('No se encontró el contenedor summaryItems');
+    console.error('❌ No se encontró el contenedor summaryItems');
     return;
   }
 
@@ -73,6 +102,7 @@ function loadCartSummary() {
         <p>Tu carrito está vacío</p>
       </div>
     `;
+    updateTotals();
     return;
   }
 
@@ -89,23 +119,24 @@ function loadCartSummary() {
         .map(([k, v]) => `${k}: ${v}`)
         .join(' · ');
       if (customPairs) {
-        customText = `<div class="summary-item-details">${customPairs}</div>`;
+        customText = `<div class="summary-item-details" style="font-size: 0.85em; color: #666; margin-top: 0.3rem;">${customPairs}</div>`;
       }
     }
 
     return `
-      <div class="summary-item">
-        <img src="${item.imagen}" alt="${item.nombre}" class="summary-item-img">
-        <div class="summary-item-info">
-          <div class="summary-item-name">${item.nombre}</div>
+      <div class="summary-item" style="display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid #eee;">
+        <img src="${item.imagen}" alt="${item.nombre}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
+        <div style="flex: 1;">
+          <div style="font-weight: 500;">${item.nombre}</div>
           ${customText}
-          <div class="summary-item-qty">Cantidad: ${qty}</div>
+          <div style="font-size: 0.9em; color: #666; margin-top: 0.3rem;">Cantidad: ${qty}</div>
         </div>
-        <div class="summary-item-price">${money(total)}</div>
+        <div style="font-weight: 600; color: #e63970;">${money(total)}</div>
       </div>
     `;
   }).join('');
 
+  console.log('✅ Productos cargados en resumen:', cart.length);
   updateTotals();
 }
 
@@ -114,7 +145,7 @@ function loadCartSummary() {
 // ==========================================
 function updateTotals() {
   const cart = getCart();
-  
+
   // Calcular subtotal
   let subtotal = 0;
   cart.forEach(item => {
@@ -123,7 +154,7 @@ function updateTotals() {
     subtotal += qty * price;
   });
 
-  // Calcular envío
+  // Calcular envío (respetando la selección del carrito)
   let shipping = 0;
   const deliveryTypeRadio = document.querySelector('input[name="deliveryType"]:checked');
   if (deliveryTypeRadio && deliveryTypeRadio.value === 'home') {
@@ -133,14 +164,33 @@ function updateTotals() {
   // Total
   const total = subtotal + shipping;
 
-  // Actualizar elementos del DOM
+  // Actualizar DOM
   const subtotalEl = document.getElementById('summarySubtotal');
   const shippingEl = document.getElementById('summaryShipping');
   const totalEl = document.getElementById('summaryTotal');
 
-  if (subtotalEl) subtotalEl.textContent = money(subtotal);
-  if (shippingEl) shippingEl.textContent = money(shipping);
-  if (totalEl) totalEl.textContent = money(total);
+  if (subtotalEl) {
+    subtotalEl.textContent = money(subtotal);
+    console.log('✅ Subtotal actualizado:', money(subtotal));
+  } else {
+    console.error('❌ No se encontró summarySubtotal');
+  }
+
+  if (shippingEl) {
+    shippingEl.textContent = money(shipping);
+    console.log('✅ Envío actualizado:', money(shipping));
+  } else {
+    console.error('❌ No se encontró summaryShipping');
+  }
+
+  if (totalEl) {
+    totalEl.textContent = money(total);
+    console.log('✅ Total actualizado:', money(total));
+  } else {
+    console.error('❌ No se encontró summaryTotal');
+  }
+
+  console.log('💰 Totales:', { subtotal, shipping, total });
 }
 
 // ==========================================
@@ -289,8 +339,9 @@ function confirmOrder() {
 
   // Limpiar carrito
   localStorage.removeItem('carrito');
+  updateCartBadge();
 
-  console.log('Pedido confirmado:', orderNumber);
+  console.log('✅ Pedido confirmado:', orderNumber);
 }
 
 // ==========================================
@@ -301,19 +352,21 @@ function setupConditionalFields() {
   const deliveryRadios = document.querySelectorAll('input[name="deliveryType"]');
   const addressFields = document.getElementById('addressFields');
   
-  // Obtener todos los inputs dentro de addressFields
+  if (!addressFields) {
+    console.warn('⚠️ No se encontró addressFields');
+    return;
+  }
+
   const requiredInputs = addressFields.querySelectorAll('input[required], select[required]');
 
   deliveryRadios.forEach(radio => {
     radio.addEventListener('change', () => {
       if (radio.value === 'home') {
-        // Mostrar campos y hacerlos obligatorios
         addressFields.style.display = 'block';
         requiredInputs.forEach(input => {
           input.setAttribute('required', 'required');
         });
       } else {
-        // Ocultar campos y QUITAR la obligatoriedad
         addressFields.style.display = 'none';
         requiredInputs.forEach(input => {
           input.removeAttribute('required');
@@ -328,7 +381,11 @@ function setupConditionalFields() {
   const cardFields = document.getElementById('cardFields');
   const transferenciaInfo = document.getElementById('transferenciaInfo');
   
-  // Obtener inputs de tarjeta
+  if (!cardFields || !transferenciaInfo) {
+    console.warn('⚠️ No se encontraron campos de pago');
+    return;
+  }
+
   const cardInputs = cardFields.querySelectorAll('input');
 
   paymentRadios.forEach(radio => {
@@ -355,7 +412,7 @@ function setupConditionalFields() {
     });
   });
 
-  // Configuración inicial: Si ya está seleccionado "Recoger en tienda"
+  // Configuración inicial
   const pickupRadio = document.querySelector('input[name="deliveryType"][value="pickup"]');
   if (pickupRadio && pickupRadio.checked) {
     addressFields.style.display = 'none';
@@ -374,7 +431,6 @@ function setupFormHandlers() {
   if (formPersonal) {
     formPersonal.addEventListener('submit', (e) => {
       e.preventDefault();
-      console.log('Submit paso 1');
       if (validateStep1()) {
         showStep(2);
       }
@@ -386,7 +442,6 @@ function setupFormHandlers() {
   if (formEntrega) {
     formEntrega.addEventListener('submit', (e) => {
       e.preventDefault();
-      console.log('Submit paso 2');
       if (validateStep2()) {
         showStep(3);
       }
@@ -398,7 +453,6 @@ function setupFormHandlers() {
   if (formPago) {
     formPago.addEventListener('submit', (e) => {
       e.preventDefault();
-      console.log('Submit paso 3');
       if (validateStep3()) {
         confirmOrder();
       }
@@ -491,9 +545,9 @@ function setupMinDate() {
 // INICIALIZACIÓN
 // ==========================================
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Checkout inicializado');
+  console.log('🌸 Checkout inicializado');
 
-  // 🔐 Verificar usuario logueado
+  // Verificar usuario logueado
   const currentUser = typeof getCurrentUser === "function" ? getCurrentUser() : null;
 
   if (!currentUser) {
@@ -502,6 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // Prellenar datos del usuario
   const nombre = document.getElementById('nombre');
   const email = document.getElementById('email');
   if (nombre && currentUser.name) nombre.value = currentUser.name;
@@ -509,6 +564,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Verificar carrito
   const cart = getCart();
+  console.log('🛒 Carrito actual:', cart);
+
   if (cart.length === 0) {
     if (confirm('Tu carrito está vacío. ¿Deseas ir al catálogo?')) {
       window.location.href = 'index.html#catalogo';
@@ -516,8 +573,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Cargar resumen
+  // ⭐ RECUPERAR OPCIÓN DE ENVÍO DEL CARRITO
+  const savedShipping = localStorage.getItem('shippingOption');
+  if (savedShipping) {
+    try {
+      const shippingData = JSON.parse(savedShipping);
+      console.log('📦 Opción de envío del carrito:', shippingData);
+      
+      // Preseleccionar el radio button correcto
+      const radioToSelect = document.querySelector(`input[name="deliveryType"][value="${shippingData.type}"]`);
+      if (radioToSelect) {
+        radioToSelect.checked = true;
+        console.log('✅ Preseleccionado:', shippingData.type);
+        
+        // Si es pickup, ocultar campos de dirección
+        if (shippingData.type === 'pickup') {
+          const addressFields = document.getElementById('addressFields');
+          if (addressFields) {
+            addressFields.style.display = 'none';
+            const requiredInputs = addressFields.querySelectorAll('input[required], select[required]');
+            requiredInputs.forEach(input => input.removeAttribute('required'));
+          }
+        }
+      }
+    } catch (e) {
+      console.error('Error al leer opción de envío:', e);
+    }
+  } else {
+    console.log('ℹ️ No hay opción de envío guardada, usando "home" por defecto');
+  }
+
+  // Cargar resumen del pedido
   loadCartSummary();
+
+  // Actualizar badge del carrito
+  updateCartBadge();
 
   // Configurar todo
   setupFormHandlers();
@@ -529,5 +619,5 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mostrar paso 1
   showStep(1);
 
-  console.log('Checkout listo');
+  console.log('✅ Checkout listo');
 });
