@@ -348,8 +348,9 @@ function renderRightPanelItemsList(){
   const carrito = getCart();
   ul.innerHTML = '';
 
+  // 🔹 Carrito vacío → mensaje distinto en el resumen
   if(!carrito || carrito.length === 0){
-    ul.innerHTML = '<li>Tu carrito está vacío</li>';
+    ul.innerHTML = '<li class="empty-summary">Agrega productos para ver el resumen aquí.</li>';
     return;
   }
 
@@ -381,6 +382,7 @@ function renderRightPanelItemsList(){
     ul.appendChild(li);
   });
 }
+
 
 // ========================
 // DOM helpers por renglón
@@ -539,6 +541,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
       contenedor.innerHTML = '<p>Tu carrito está vacío 🛒</p>';
     });
   }
+
+  clearBtn.addEventListener('click', ()=>{
+  document.querySelectorAll('.cart-item').forEach(e=>e.remove());
+  localStorage.removeItem('carrito');
+  refresh();
+  renderRightPanelItemsList();
+  updateCartBadge(); // 👈 actualiza el numerito del carrito
+  const contenedor = document.querySelector('.cart-items');
+  contenedor.innerHTML = '<p>Tu carrito está vacío 🛒</p>';
+});
+
 
   // 🔥 CONEXIÓN AL CHECKOUT
   const checkoutBtn = document.getElementById('checkout');

@@ -526,3 +526,18 @@
 }
 .item-actions .duplicate-item:hover{ background: #f6f6f6; }
 
+.btn-clear {
+  border-color: #ef4444;
+  color: #ef4444;
+}
+
+.btn-clear:hover {
+  background: #ef4444;
+  color: #fff;
+}
+
+.resumen-items .empty-summary {
+  font-style: italic;
+  color: var(--gris-oscuro);
+}
+
